@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 610 250" width="610" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- ICON -->
+  <g transform="matrix(0.9,0,0,0.9,-5.23467,-4.728774)">
+    <rect x="20" y="90" width="150" height="150" rx="14" style="fill:#7fb8dc;fill-opacity:1"/>
+    <rect x="45" y="55" width="150" height="150" rx="14" style="fill:#1481b8;fill-opacity:1"/>
+    <rect x="70" y="20" width="150" height="150" rx="14" style="fill:#0a1826;fill-opacity:1"/>
+    <path d="M 97.5,15 V 141.5 H 114 V 245 l 38.5,-138 h -22 l 22,-92 z"
+          style="fill:#ffd400;fill-opacity:1;stroke:#0a1826;stroke-opacity:1" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <!-- WORDMARK (light, for dark backgrounds) -->
+  <g font-family="Montserrat, Poppins, sans-serif" font-weight="700" transform="translate(-79.234667,-64.728774)">
+    <text x="300" y="130" font-size="66px" style="fill:#f4f7fa;fill-opacity:1">Migrando</text>
+    <text x="296.03256" y="209.18506" font-size="67.0204px" transform="scale(1.0154614,0.98477398)" style="fill:#f4f7fa;fill-opacity:1;stroke-width:1.01547">para <tspan style="fill:#7fb8dc;fill-opacity:1;stroke-width:1.01547">BIM</tspan></text>
+  </g>
+  <!-- discipline tag + version badge -->
+  <g transform="matrix(1.0014553,0,0,1,227.20081,190.92512)">
+    <rect x="0" y="0" width="168" height="38" rx="19" fill="#ffd400"/>
+    <text x="84" y="26" font-family="Montserrat, Poppins, sans-serif" font-weight="700" font-size="20px" letter-spacing="1.5" fill="#16324a" text-anchor="middle">ELÉTRICA</text>
+  </g>
+  <g transform="matrix(1.0014553,0,0,1,402.43217,190.92512)">
+    <rect x="0" y="0" width="62" height="38" rx="19" fill="#f4f7fa"/>
+    <text x="31" y="26" font-family="Montserrat, Poppins, sans-serif" font-weight="700" font-size="20px" fill="#16324a" text-anchor="middle">2.0</text>
+  </g>
+  <!-- subtitle -->
+  <text x="222.5101" y="182.73631" font-family="Montserrat, Poppins, sans-serif" font-weight="400" font-size="26.3719px" letter-spacing="0.5" transform="scale(1.0143021,0.98589957)" style="fill:#a9c9dd;fill-opacity:1;stroke-width:1.0143">com Revit + Pro-Elétrica</text>
+</svg>

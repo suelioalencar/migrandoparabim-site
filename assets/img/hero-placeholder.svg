@@ -1,0 +1,57 @@
+<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prévia ilustrativa de um projeto elétrico em Revit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2439"/>
+      <stop offset="1" stop-color="#16324a"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#2a4a67" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <rect width="640" height="480" fill="url(#grid)"/>
+
+  <!-- floor plan outline -->
+  <g fill="none" stroke="#7fb8dc" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M80,90 H460 V240 H360 V390 H80 Z"/>
+    <path d="M80,240 H360"/>
+    <path d="M200,90 V240"/>
+    <path d="M200,240 V390"/>
+  </g>
+
+  <!-- conduit / circuit runs -->
+  <g fill="none" stroke="#ffd400" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10">
+    <path d="M110,110 H430 V220"/>
+    <path d="M230,260 V370"/>
+    <path d="M110,370 H330"/>
+  </g>
+
+  <!-- device symbols -->
+  <g fill="#1481b8" stroke="#eaf4fb" stroke-width="2">
+    <circle cx="140" cy="120" r="9"/>
+    <circle cx="380" cy="120" r="9"/>
+    <circle cx="380" cy="210" r="9"/>
+    <circle cx="250" cy="280" r="9"/>
+    <circle cx="120" cy="360" r="9"/>
+    <circle cx="300" cy="360" r="9"/>
+  </g>
+  <g fill="#ffd400">
+    <circle cx="140" cy="120" r="3"/>
+    <circle cx="380" cy="120" r="3"/>
+    <circle cx="380" cy="210" r="3"/>
+    <circle cx="250" cy="280" r="3"/>
+    <circle cx="120" cy="360" r="3"/>
+    <circle cx="300" cy="360" r="3"/>
+  </g>
+
+  <!-- panel board -->
+  <g transform="translate(420,300)">
+    <rect x="0" y="0" width="120" height="150" rx="8" fill="#0a1826" stroke="#7fb8dc" stroke-width="2"/>
+    <rect x="14" y="16" width="92" height="14" rx="3" fill="#1481b8"/>
+    <rect x="14" y="38" width="92" height="14" rx="3" fill="#274a63"/>
+    <rect x="14" y="60" width="92" height="14" rx="3" fill="#1481b8"/>
+    <rect x="14" y="82" width="92" height="14" rx="3" fill="#274a63"/>
+    <rect x="14" y="104" width="92" height="14" rx="3" fill="#1481b8"/>
+    <rect x="14" y="126" width="92" height="14" rx="3" fill="#ffd400"/>
+  </g>
+</svg>
