@@ -184,6 +184,43 @@ body {
   background: var(--navy-900);
 }
 
+/* ---------- prova social ---------- */
+.social-proof {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(255,212,0,.07), rgba(20,129,184,.10));
+}
+.social-proof-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 34px 24px;
+}
+.social-proof-number {
+  flex: 0 0 auto;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--yellow);
+  text-shadow: 0 0 40px rgba(255,212,0,.35);
+}
+.social-proof-text {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+.social-proof-text strong { color: var(--text); }
+.social-proof-highlight {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--yellow);
+}
+.cta-final-sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 26px; }
+
 /* ---------- sections ---------- */
 .section { padding: 88px 0; }
 .section-alt { background: linear-gradient(180deg, transparent, rgba(255,255,255,.02) 15%, rgba(255,255,255,.02) 85%, transparent); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -470,6 +507,7 @@ body {
   .nav-toggle { display: flex; }
 }
 @media (max-width: 620px) {
+  .social-proof-inner { flex-direction: column; text-align: center; gap: 12px; }
   .grid-3, .feature-grid, .gallery { grid-template-columns: 1fr; }
   .curriculum-panel-inner { padding-left: 22px; }
   .pricing-card { padding: 36px 24px; }
