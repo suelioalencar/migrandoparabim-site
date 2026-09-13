@@ -199,18 +199,11 @@ const PLUGIN_FEATURES = [
 // ---------------------------------------------------------------------
 const DEMO_VIDEOS = [
   {
-    // [2] VÍDEO — Apresentação do curso
+    // [2] VÍDEO — Apresentação do curso (único vídeo, real)
     title: "Apresentação do curso",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // [2a] URL de embed (YouTube/Vimeo)
-    thumbnail: "assets/img/detail-placeholder-1.svg",      // [2b] capa do card
-    placeholder: true,                                     // trocar para false quando o vídeo for real
-  },
-  {
-    // [3] VÍDEO — Prévia de uma aula (Dimensionamentos)
-    title: "Prévia de uma aula do módulo de Dimensionamentos",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // [3a] URL de embed (YouTube/Vimeo)
-    thumbnail: "assets/img/detail-placeholder-3.svg",      // [3b] capa do card
-    placeholder: true,                                     // trocar para false quando o vídeo for real
+    embedUrl: "https://www.youtube.com/embed/uCiW-hvdRYQ?rel=0",
+    thumbnail: "https://img.youtube.com/vi/uCiW-hvdRYQ/maxresdefault.jpg", // puxa direto do YouTube — sempre a thumbnail atual
+    placeholder: false,
   },
 ];
 

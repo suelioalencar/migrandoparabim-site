@@ -438,6 +438,10 @@ body {
 .tab-panel.active { display: block; }
 
 .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+/* só um vídeo por enquanto: preenche a largura do container, como um
+   banner só — sem coluna vazia ao lado. */
+#videoGrid { grid-template-columns: 1fr; }
+#videoGrid .media-thumb { aspect-ratio: 16/9; }
 .media-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -697,7 +701,7 @@ body {
 .modal-backdrop { position: absolute; inset: 0; background: rgba(5,12,20,.82); backdrop-filter: blur(4px); }
 .modal-dialog {
   position: relative;
-  max-width: 960px;
+  max-width: min(1400px, 92vw);
   margin: 5vh auto;
   padding: 0 20px;
 }
