@@ -2,8 +2,9 @@
  * ifc-viewer.js
  * -----------------------------------------------------------------------
  * Visualizador 3D do modelo elétrico, no lugar da imagem do hero.
- * Carrega sob demanda (só quando o visitante clica) para não pesar o
- * carregamento inicial da página.
+ * Carrega automaticamente assim que a página abre, com uma barra de
+ * progresso enquanto baixa o modelo (~6MB) — sem exigir clique do
+ * visitante para ver o 3D girando.
  *
  * O modelo é servido como .glb (assets/models/projeto-eletrico.glb),
  * convertido a partir do IFC original com IfcOpenShell (motor de
@@ -185,5 +186,9 @@
     }
   }
 
+  // O modelo carrega automaticamente assim que a página abre — sem exigir
+  // clique do visitante. O botão fica reservado só para o caso de falha
+  // (ex.: navegador sem WebGL), quando aparece como "tentar de novo".
   loadBtn.addEventListener("click", loadViewer);
+  loadViewer();
 })();
