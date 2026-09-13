@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 225" width="200" height="225" role="img" aria-label="Migrando para BIM">
+  <title>Migrando para BIM — símbolo</title>
+  <defs>
+    <filter id="boltGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g transform="matrix(0.9,0,0,0.9,-5.23467,-4.728774)">
+    <rect x="20" y="90" width="150" height="150" rx="14" fill="#7fb8dc"/>
+    <rect x="45" y="55" width="150" height="150" rx="14" fill="#1481b8"/>
+    <rect x="70" y="20" width="150" height="150" rx="14" fill="#1b3a56" stroke="#33587a" stroke-width="2"/>
+    <path d="M 97.5,15 V 141.5 H 114 V 245 l 38.5,-138 h -22 l 22,-92 z"
+          fill="#ffd400" stroke="#0a1826" stroke-width="3" stroke-linejoin="round" filter="url(#boltGlow)"/>
+  </g>
+</svg>

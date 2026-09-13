@@ -53,12 +53,31 @@
   /* ---------------- Curriculum (grade do curso) ---------------- */
   const curriculumEl = document.getElementById("curriculumAccordion");
   if (curriculumEl && typeof COURSE_MODULES !== "undefined") {
-    curriculumEl.innerHTML = COURSE_MODULES.map((mod, i) => `
-      <div class="curriculum-item">
+    const stats = typeof COURSE_STATS !== "undefined" ? COURSE_STATS : {};
+
+    const moduleMeta = (mod) => {
+      if (mod.upcoming) return `<span class="curriculum-count is-upcoming">${mod.status || "Em breve"}</span>`;
+      const count = mod.lessonsCount || mod.lessons.length;
+      return `<span class="curriculum-count">${count} aula${count > 1 ? "s" : ""} · ${mod.duration}</span>`;
+    };
+
+    let firstUpcoming = true;
+    curriculumEl.innerHTML = COURSE_MODULES.map((mod, i) => {
+      let divider = "";
+      if (mod.upcoming && firstUpcoming) {
+        firstUpcoming = false;
+        divider = `
+      <div class="curriculum-divider">
+        <span class="curriculum-divider-label">${stats.upcomingLabel || "E ainda vem mais…"}</span>
+        <p>${stats.upcomingNote || ""}</p>
+      </div>`;
+      }
+      return `${divider}
+      <div class="curriculum-item${mod.upcoming ? " is-upcoming" : ""}">
         <button class="curriculum-trigger" type="button">
           <span class="curriculum-index">${String(i + 1).padStart(2, "0")}</span>
           <span class="curriculum-title">${mod.title}</span>
-          <span class="curriculum-count">${mod.lessons.length} aula${mod.lessons.length > 1 ? "s" : ""}</span>
+          ${moduleMeta(mod)}
           <span class="curriculum-icon">+</span>
         </button>
         <div class="curriculum-panel">
@@ -66,8 +85,8 @@
             <ul>${mod.lessons.map((l) => `<li>${l}</li>`).join("")}</ul>
           </div>
         </div>
-      </div>
-    `).join("");
+      </div>`;
+    }).join("");
     wireAccordion(curriculumEl, ".curriculum-item", ".curriculum-trigger", ".curriculum-panel");
   }
 
@@ -84,10 +103,14 @@
 
   /* ---------------- Media modal ---------------- */
   const modal = document.getElementById("mediaModal");
+  const modalDialog = modal.querySelector(".modal-dialog");
   const modalBody = document.getElementById("modalBody");
 
-  function openModal(embedUrl) {
+  function openModal(embedUrl, kind = "video") {
+    const isDoc = kind === "pdf";
     modalBody.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>`;
+    modalDialog.classList.toggle("is-doc", isDoc);
+    modalBody.classList.toggle("is-doc", isDoc);
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -104,13 +127,14 @@
   });
 
   /* ---------------- Media grids (vídeos / pdfs) ---------------- */
-  function renderMediaGrid(gridEl, items) {
+  function renderMediaGrid(gridEl, items, kind = "video") {
     if (!gridEl) return;
+    const playIcon = kind === "pdf" ? "🔍" : "▶";
     gridEl.innerHTML = items.map((item, i) => `
       <button class="media-card" type="button" data-index="${i}">
         <span class="media-thumb">
           <img src="${item.thumbnail}" alt="" loading="lazy">
-          <span class="media-play"><span>▶</span></span>
+          <span class="media-play"><span>${playIcon}</span></span>
           ${item.placeholder ? '<span class="media-badge">Em breve</span>' : ""}
         </span>
         <span class="media-body"><h4>${item.title}</h4></span>
@@ -119,13 +143,62 @@
     gridEl.querySelectorAll(".media-card").forEach((card) => {
       card.addEventListener("click", () => {
         const item = items[Number(card.dataset.index)];
-        openModal(item.embedUrl);
+        openModal(item.embedUrl, kind);
       });
     });
   }
 
-  if (typeof DEMO_VIDEOS !== "undefined") renderMediaGrid(document.getElementById("videoGrid"), DEMO_VIDEOS);
-  if (typeof DEMO_PDFS !== "undefined") renderMediaGrid(document.getElementById("pdfGrid"), DEMO_PDFS);
+  if (typeof DEMO_VIDEOS !== "undefined") renderMediaGrid(document.getElementById("videoGrid"), DEMO_VIDEOS, "video");
+  if (typeof DEMO_PDFS !== "undefined") renderMediaGrid(document.getElementById("pdfGrid"), DEMO_PDFS, "pdf");
+
+  /* ---------------- Copiar cupom ---------------- */
+  document.querySelectorAll("button[data-coupon]").forEach((btn) => {
+    const labelEl = btn.querySelector(".promo-copy, .coupon-copy");
+    if (!labelEl) return;
+    const original = labelEl.textContent;
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.coupon);
+        labelEl.textContent = "copiado!";
+      } catch (err) {
+        labelEl.textContent = "selecione e copie";
+      }
+      setTimeout(() => { labelEl.textContent = original; }, 2000);
+    });
+  });
+
+  /* ---------------- Oferta por tempo limitado ----------------
+   * O site é estático (sem backend), então quem garante que a oferta
+   * "some" sozinha depois do prazo é este bloco: ele lê a data do
+   * navegador e decide, a cada carregamento, se mostra os elementos
+   * marcados com [data-promo-only] (preço com desconto, barra do topo,
+   * selo no hero) ou os marcados com [data-regular-only] (preço cheio).
+   * Os elementos de oferta já nascem com "hidden" no HTML — se por
+   * algum motivo este script não rodar, o site cai no preço normal,
+   * nunca no desconto indevido.
+   *
+   * Para trocar a campanha depois: mexa só em PROMO (datas, cupom %)
+   * e nos textos/valores dos elementos [data-promo-only] no HTML.
+   */
+  (function () {
+    const PROMO = {
+      start: new Date(2026, 8, 13, 0, 0, 0),  // 13/09/2026 00:00 (mês 0-indexado: 8 = setembro)
+      end:   new Date(2026, 8, 20, 0, 0, 0),  // expira à meia-noite de 20/09 → válido até 19/09 23:59
+    };
+    const now = new Date();
+    const active = now >= PROMO.start && now < PROMO.end;
+
+    document.querySelectorAll("[data-promo-only]").forEach((el) => { el.hidden = !active; });
+    document.querySelectorAll("[data-regular-only]").forEach((el) => { el.hidden = active; });
+
+    if (active) {
+      document.querySelectorAll("a.js-buy-link[data-coupon]").forEach((a) => {
+        const url = new URL(a.href);
+        url.searchParams.set("coupon", a.dataset.coupon);
+        a.href = url.toString();
+      });
+    }
+  })();
 
   /* ---------------- Tabs (vídeos / pdfs) ---------------- */
   const tabButtons = document.querySelectorAll(".tab-btn");

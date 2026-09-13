@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="1600" height="400" role="img" aria-label="Migrando para BIM 2.0 — com Revit e Pro-Elétrica">
+  <title>Migrando para BIM 2.0 — checkout</title>
+  <defs>
+    <!-- brilho contido: chega a zero antes das bordas, para o banner fundir com o fundo #0a1826 -->
+    <radialGradient id="glowBlue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"    stop-color="#1c6f9e" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#155a82" stop-opacity="0.22"/>
+      <stop offset="1"    stop-color="#0a1826" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowWarm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd400" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ffd400" stop-opacity="0"/>
+    </radialGradient>
+    <!-- filete que some nas duas pontas, sem aresta -->
+    <linearGradient id="ruleFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#ffd400" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="#ffd400" stop-opacity="0.85"/>
+      <stop offset="0.78" stop-color="#ffd400" stop-opacity="0.85"/>
+      <stop offset="1"    stop-color="#ffd400" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bimGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7fb8dc"/>
+      <stop offset="1" stop-color="#bfe0f2"/>
+    </linearGradient>
+    <filter id="boltGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- base: exatamente a cor de fundo do checkout -->
+  <rect width="1600" height="400" fill="#0a1826"/>
+  <!-- brilhos totalmente contidos dentro da tela -->
+  <ellipse cx="620" cy="200" rx="600" ry="200" fill="url(#glowBlue)"/>
+  <ellipse cx="1240" cy="200" rx="340" ry="190" fill="url(#glowWarm)"/>
+
+  <rect x="0" y="0" width="1600" height="4" fill="url(#ruleFade)"/>
+
+  <!-- ícone da marca -->
+  <g transform="translate(150,92) scale(0.98)">
+    <g transform="matrix(0.9,0,0,0.9,-5.23467,-4.728774)">
+      <rect x="20" y="90" width="150" height="150" rx="14" fill="#7fb8dc"/>
+      <rect x="45" y="55" width="150" height="150" rx="14" fill="#1481b8"/>
+      <rect x="70" y="20" width="150" height="150" rx="14" fill="#1b3a56" stroke="#33587a" stroke-width="2"/>
+      <path d="M 97.5,15 V 141.5 H 114 V 245 l 38.5,-138 h -22 l 22,-92 z"
+            fill="#ffd400" stroke="#0a1826" stroke-width="3" stroke-linejoin="round" filter="url(#boltGlow)"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800" letter-spacing="-0.5">
+    <text x="400" y="176" font-size="64" fill="#f4f7fa">MIGRANDO PARA</text>
+    <text x="400" y="252" font-size="64" fill="url(#bimGrad)">BIM <tspan fill="#ffd400">2.0</tspan></text>
+  </g>
+  <text x="400" y="300" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+        font-size="28" fill="#a9c2d3">com Revit + Pro-Elétrica</text>
+
+  <!-- selos de confiança -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="17" letter-spacing="0.8">
+    <g transform="translate(1010,150)">
+      <rect width="230" height="46" rx="23" fill="#16324a" stroke="#24425e"/>
+      <text x="115" y="30" text-anchor="middle" fill="#eaf2f8">ACESSO VITALÍCIO</text>
+    </g>
+    <g transform="translate(1256,150)">
+      <rect width="230" height="46" rx="23" fill="#16324a" stroke="#24425e"/>
+      <text x="115" y="30" text-anchor="middle" fill="#eaf2f8">7 DIAS DE GARANTIA</text>
+    </g>
+    <g transform="translate(1010,208)">
+      <rect width="230" height="46" rx="23" fill="#16324a" stroke="#24425e"/>
+      <text x="115" y="30" text-anchor="middle" fill="#eaf2f8">+200 ALUNOS</text>
+    </g>
+    <g transform="translate(1256,208)">
+      <rect width="230" height="46" rx="23" fill="#ffd400"/>
+      <text x="115" y="30" text-anchor="middle" fill="#0f2439">6 MESES DE PLUGIN*</text>
+    </g>
+  </g>
+</svg>

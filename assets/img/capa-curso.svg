@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Migrando para BIM 2.0 — com Revit e Pro-Elétrica">
+  <title>Migrando para BIM 2.0 — com Revit + Pro-Elétrica</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#0f2439"/>
+      <stop offset="0.55" stop-color="#0a1826"/>
+      <stop offset="1"    stop-color="#081320"/>
+    </linearGradient>
+
+    <radialGradient id="glowBlue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#1481b8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#1481b8" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowYellow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd400" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffd400" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#7fb8dc" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+
+    <linearGradient id="bimGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7fb8dc"/>
+      <stop offset="1" stop-color="#bfe0f2"/>
+    </linearGradient>
+
+    <linearGradient id="ruleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd400" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#1481b8" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+
+    <filter id="boltGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ===================== FUNDO ===================== -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+  <ellipse cx="120"  cy="60"  rx="640" ry="460" fill="url(#glowBlue)"/>
+  <ellipse cx="1150" cy="660" rx="520" ry="420" fill="url(#glowYellow)"/>
+  <rect x="0" y="0" width="1280" height="6" fill="#ffd400"/>
+
+  <!-- ===================== MARCA (direita) ===================== -->
+  <ellipse cx="1034" cy="333" rx="300" ry="300" fill="url(#glowBlue)" opacity="0.9"/>
+
+  <g transform="translate(880,165) scale(1.5)" filter="url(#softShadow)">
+    <g transform="matrix(0.9,0,0,0.9,-5.23467,-4.728774)">
+      <rect x="20" y="90" width="150" height="150" rx="14" fill="#7fb8dc"/>
+      <rect x="45" y="55" width="150" height="150" rx="14" fill="#1481b8"/>
+      <rect x="70" y="20" width="150" height="150" rx="14" fill="#1b3a56" stroke="#33587a" stroke-width="2"/>
+      <path d="M 97.5,15 V 141.5 H 114 V 245 l 38.5,-138 h -22 l 22,-92 z"
+            fill="#ffd400" stroke="#0a1826" stroke-width="3" stroke-linejoin="round" filter="url(#boltGlow)"/>
+    </g>
+  </g>
+
+  <!-- ===================== TEXTO (esquerda) ===================== -->
+
+  <!-- eyebrow -->
+  <g transform="translate(80,92)">
+    <rect x="0" y="0" width="330" height="42" rx="21" fill="#1481b8" fill-opacity="0.18" stroke="#1481b8" stroke-opacity="0.55"/>
+    <text x="24" y="28" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700"
+          font-size="17" letter-spacing="2.4" fill="#7fb8dc">TREINAMENTO COMPLETO</text>
+  </g>
+
+  <!-- título -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800" letter-spacing="-1">
+    <text x="80" y="248" font-size="80" fill="#f4f7fa">MIGRANDO</text>
+    <text x="80" y="338" font-size="80" fill="#f4f7fa">PARA <tspan fill="url(#bimGrad)">BIM</tspan> <tspan fill="#ffd400">2.0</tspan></text>
+  </g>
+
+  <!-- régua -->
+  <rect x="80" y="378" width="470" height="4" rx="2" fill="url(#ruleGrad)"/>
+
+  <!-- subtítulo -->
+  <text x="80" y="432" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+        font-size="32" fill="#dbe9f4">com Revit + <tspan fill="#7fb8dc">Pro-Elétrica</tspan></text>
+
+  <text x="80" y="474" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="400"
+        font-size="23" fill="#a9c2d3">Projetos elétricos de altíssimo detalhamento, do zero à entrega.</text>
+
+  <!-- selos -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="17" letter-spacing="1">
+    <g transform="translate(80,524)">
+      <rect width="176" height="46" rx="23" fill="#16324a" stroke="#24425e"/>
+      <text x="88" y="30" text-anchor="middle" fill="#eaf2f8">10 MÓDULOS</text>
+    </g>
+    <g transform="translate(268,524)">
+      <rect width="212" height="46" rx="23" fill="#16324a" stroke="#24425e"/>
+      <text x="106" y="30" text-anchor="middle" fill="#eaf2f8">DO ZERO À ENTREGA</text>
+    </g>
+    <g transform="translate(492,524)">
+      <rect width="194" height="46" rx="23" fill="#ffd400"/>
+      <text x="97" y="30" text-anchor="middle" fill="#0f2439">+200 ALUNOS</text>
+    </g>
+  </g>
+
+  <!-- assinatura -->
+  <g transform="translate(80,616)">
+    <rect x="0" y="0" width="5" height="42" rx="2.5" fill="#ffd400"/>
+    <text x="20" y="18" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="400"
+          font-size="15" letter-spacing="1.6" fill="#7c93a5">POR</text>
+    <text x="20" y="41" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700"
+          font-size="23" fill="#eaf2f8">Eng. Suelio Alencar</text>
+  </g>
+
+  <text x="1200" y="662" text-anchor="end" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
+        font-weight="600" font-size="18" letter-spacing="1.2" fill="#7c93a5">migrandoparabim.com.br</text>
+</svg>

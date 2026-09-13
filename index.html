@@ -13,6 +13,20 @@
 </head>
 <body>
 
+<!-- ============ BARRA DE LANÇAMENTO ============ -->
+<!-- Oferta com prazo: o bloco fica oculto por padrão (hidden) e só aparece via JS
+     (main.js) se a data de hoje estiver dentro da janela definida em PROMO. -->
+<div class="promo-bar" data-promo-only hidden>
+  <div class="container promo-bar-inner">
+    <span class="promo-flag">🔥 Oferta de lançamento</span>
+    <span class="promo-text"><strong>30% OFF</strong> com o cupom</span>
+    <button class="promo-code" type="button" data-coupon="LANCAMENTOMB2" title="Copiar cupom">
+      LANCAMENTOMB2 <span class="promo-copy">copiar</span>
+    </button>
+    <span class="promo-note">só até 19/09 · já aplicado no checkout</span>
+  </div>
+</div>
+
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="top">
   <div class="container header-inner">
@@ -31,7 +45,7 @@
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn-primary btn-sm" href="https://pay.kiwify.com.br/jEFfOnY" target="_blank" rel="noopener">Comprar agora</a>
+      <a class="btn btn-primary btn-sm js-buy-link" data-coupon="LANCAMENTOMB2" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">Comprar agora</a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -55,12 +69,13 @@
           Pro-Elétrica para Revit.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="https://pay.kiwify.com.br/jEFfOnY" target="_blank" rel="noopener">
+          <a class="btn btn-primary btn-lg js-buy-link" data-coupon="LANCAMENTOMB2" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
             Quero migrar para BIM
           </a>
           <a class="btn btn-ghost btn-lg" href="#demonstracao">Ver demonstração ▶</a>
         </div>
         <ul class="hero-trust">
+          <li data-promo-only hidden>🔥 30% OFF de lançamento</li>
           <li>🎓 Mais de 200 alunos na v1.0</li>
           <li>✔ Acesso vitalício</li>
           <li>✔ 7 dias de garantia</li>
@@ -69,9 +84,20 @@
       </div>
 
       <div class="hero-media">
-        <div class="media-frame">
-          <!-- PLACEHOLDER: trocar por vídeo/print real do curso 2.0 -->
-          <img src="assets/img/hero-placeholder.svg" alt="Prévia do projeto desenvolvido no curso" loading="eager">
+        <div class="media-frame ifc-viewer" id="ifcViewer">
+          <img src="assets/img/detalhe-hero.png" alt="Vista 3D geral do projeto elétrico desenvolvido no curso" loading="eager" class="ifc-poster" id="ifcPoster">
+
+          <button class="ifc-load-btn" id="ifcLoadBtn" type="button">
+            <span class="ifc-load-icon" aria-hidden="true">⟲</span>
+            Girar o modelo 3D (IFC) do projeto
+          </button>
+
+          <div class="ifc-progress" id="ifcProgress" hidden>
+            <div class="ifc-progress-track"><div class="ifc-progress-fill" id="ifcProgressFill"></div></div>
+            <span id="ifcProgressLabel">Carregando modelo 3D…</span>
+          </div>
+
+          <span class="ifc-hint" id="ifcHint" hidden>Arraste para girar · role para zoom</span>
         </div>
       </div>
     </div>
@@ -128,8 +154,12 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Grade curricular</p>
-        <h2>10 módulos, do primeiro clique à entrega do projeto</h2>
-        <p class="section-lead">Conteúdo completo da turma 2.0, direto do escopo oficial do curso.</p>
+        <h2>13 módulos, do primeiro clique à entrega do projeto</h2>
+        <p class="section-lead">
+          <strong>11 módulos já gravados</strong> — 45 aulas e mais de 18 horas de conteúdo, seguindo
+          um projeto real do início ao fim. Os módulos restantes estão em produção e entram na
+          plataforma sem custo adicional.
+        </p>
       </div>
 
       <div class="curriculum" id="curriculumAccordion">
@@ -194,10 +224,9 @@
         <h2>Nível de detalhamento profissional</h2>
       </div>
       <div class="gallery" id="detailGallery">
-        <!-- PLACEHOLDER: trocar pelas imagens reais do resultado final -->
-        <img src="assets/img/detail-placeholder-1.svg" alt="Detalhamento do projeto 1" loading="lazy">
-        <img src="assets/img/detail-placeholder-2.svg" alt="Detalhamento do projeto 2" loading="lazy">
-        <img src="assets/img/detail-placeholder-3.svg" alt="Detalhamento do projeto 3" loading="lazy">
+        <img src="assets/img/detalhe-1.png" alt="Detalhe da planta elétrica: pontos de tomada e iluminação da cozinha e dos quartos" loading="lazy">
+        <img src="assets/img/detalhe-2.jpg" alt="Detalhe construtivo: saída do quadro em eletrocalha e suporte de perfilado" loading="lazy">
+        <img src="assets/img/detalhe-3.jpg" alt="Detalhe do diagrama unifilar dos circuitos do quadro geral" loading="lazy">
       </div>
     </div>
   </section>
@@ -206,18 +235,35 @@
   <section id="preco" class="section">
     <div class="container">
       <div class="pricing-card">
-        <div class="pricing-badge">Turma 2.0</div>
+        <div class="pricing-badge" data-promo-only hidden>Turma 2.0 — oferta de lançamento</div>
+        <div class="pricing-badge" data-regular-only>Turma 2.0</div>
         <h2>Invista na sua migração para BIM</h2>
         <p class="section-lead">
-          <!-- PLACEHOLDER: atualizar valores quando o preço do 2.0 for definido -->
           Acesso vitalício ao treinamento completo + plugin Pro-Elétrica.
         </p>
-        <div class="price-box">
-          <span class="price-old">De R$ 499,00</span>
-          <span class="price-new">12x de R$ 40,08</span>
-          <span class="price-cash">ou R$ 399,20 à vista</span>
+
+        <!-- preço com a oferta de lançamento (30% OFF, cupom LANCAMENTOMB2) -->
+        <div class="price-box" data-promo-only hidden>
+          <span class="price-old">De R$ 649,00</span>
+          <span class="price-off">−30% de lançamento</span>
+          <span class="price-new">12x de R$ 46,98</span>
+          <span class="price-cash">ou R$ 454,30 à vista</span>
         </div>
-        <a class="btn btn-primary btn-lg" href="https://pay.kiwify.com.br/jEFfOnY" target="_blank" rel="noopener">
+        <div class="coupon-box" data-promo-only hidden>
+          <span class="coupon-label">Cupom de lançamento · válido só até 19/09</span>
+          <button class="coupon-code" type="button" data-coupon="LANCAMENTOMB2" title="Copiar cupom">
+            LANCAMENTOMB2 <span class="coupon-copy">copiar</span>
+          </button>
+          <span class="coupon-hint">O desconto já entra aplicado ao clicar no botão abaixo.</span>
+        </div>
+
+        <!-- preço padrão, sem cupom (fora da janela da oferta) -->
+        <div class="price-box" data-regular-only>
+          <span class="price-new">12x de R$ 67,12</span>
+          <span class="price-cash">ou R$ 649,00 à vista</span>
+        </div>
+
+        <a class="btn btn-primary btn-lg js-buy-link" data-coupon="LANCAMENTOMB2" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
           Garantir minha vaga
         </a>
         <ul class="price-list">
@@ -294,7 +340,7 @@
     <div class="container">
       <h2>Pronto para migrar de vez para BIM?</h2>
       <p class="cta-final-sub">Junte-se a mais de 200 alunos que já mudaram a forma como projetam.</p>
-      <a class="btn btn-primary btn-lg" href="https://pay.kiwify.com.br/jEFfOnY" target="_blank" rel="noopener">
+      <a class="btn btn-primary btn-lg js-buy-link" data-coupon="LANCAMENTOMB2" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
         Comprar agora
       </a>
     </div>
@@ -329,5 +375,6 @@
 
 <script src="js/content.js"></script>
 <script src="js/main.js"></script>
+<script type="module" src="js/ifc-viewer.js"></script>
 </body>
 </html>

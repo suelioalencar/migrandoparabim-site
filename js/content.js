@@ -11,104 +11,130 @@
  */
 
 // ---------------------------------------------------------------------
-// Módulos do curso (extraído do escopo oficial "Migrando para BIM 2.0")
+// Módulos do curso
+// Espelha as aulas já gravadas em "Aulas Editadas/Clipchamp".
+// `lessonsCount` = nº real de vídeos; `duration` = soma das durações.
+// Aulas divididas em "Parte 1/2/3" aparecem agrupadas num assunto só.
 // ---------------------------------------------------------------------
 const COURSE_MODULES = [
   {
-    title: "Boas-vindas",
+    title: "Boas-vindas e Configuração do Pro-Elétrica",
+    lessonsCount: 1,
+    duration: "18 min",
     lessons: [
-      "Entre no grupo do WhatsApp",
-      "Baixe o Pro-Elétrica para Revit",
+      "Aula inicial: baixando e configurando o Pro-Elétrica no Revit",
     ],
   },
   {
-    title: "Introdução e Fundamentos BIM",
+    title: "Introdução ao Revit",
+    lessonsCount: 2,
+    duration: "38 min",
     lessons: [
-      "Por que Revit e não CAD? O que muda de fato no fluxo de trabalho",
-      "O que é BIM na prática",
-      "Ambientação e conceitos iniciais no Revit",
+      "Introdução ao Revit: interface, navegação e lógica de trabalho",
+      "Tipos de arquivos no Revit (.rvt, .rte, .rfa) e para que serve cada um",
     ],
   },
   {
-    title: "Configurações Iniciais e Vínculos",
+    title: "Criando o Projeto Elétrico",
+    lessonsCount: 3,
+    duration: "52 min",
     lessons: [
-      "Configuração inicial e o que é um template",
-      "Iniciando o projeto elétrico a partir do template (método nativo e método plugin)",
-      "Vinculando a arquitetura a partir de arquivo .rvt (Revit nativo)",
-      "Vinculando a arquitetura a partir de arquivo .ifc (BIM interoperável)",
-      "Vinculando a arquitetura a partir de arquivo .dwg (CAD)",
-      "Configurando níveis e importando/criando espaços",
-      "Verificações antes do início do projeto: escala de trabalho e regiões de documentação",
-      "Criando tabela de espaços",
-      "Configuração dos fatores de demanda conforme a concessionária",
-      "Demandas para concessionárias diferentes usando o mesmo template",
+      "Configurando a arquitetura no Revit",
+      "Iniciando o projeto a partir do projeto em CAD",
+      "Iniciando o projeto a partir da arquitetura em IFC",
     ],
   },
   {
-    title: "Lançamento de Pontos (Iluminação, Tomadas e Interruptores)",
+    title: "Configurações e Verificações Pré-Projeto",
+    lessonsCount: 3,
+    duration: "57 min",
     lessons: [
-      "Importando o projeto luminotécnico (quando disponível)",
-      "Calculando a potência mínima de iluminação pela NBR-5410",
-      "Lançando e configurando os pontos de iluminação",
-      "Interruptores simples, paralelos e intermediários com o plugin",
-      "Cálculo da potência mínima de tomadas conforme a NBR-5410",
-      "Lançamento das tomadas de uso geral e de uso específico",
-      "Inserção automática das TAGs",
+      "Tabela de quantidade mínima de iluminação e tomadas (NBR-5410)",
+      "Pré-configurações finais e importação dos demais modelos",
+      "Configuração de demandas e de circuitos no Revit",
     ],
   },
   {
-    title: "Quadros e Circuitos",
+    title: "Lançamento e Configuração dos Pontos Elétricos",
+    lessonsCount: 13,
+    duration: "4h20",
     lessons: [
-      "Criação de plantas de supervisão de lançamento dos circuitos (opcional)",
-      "Lançamento dos quadros e criação dos circuitos com o Pro-Elétrica",
-      "Tabelas de revisão",
-      "Renomear e incluir prefixo no nome dos circuitos",
-      "Configurando as proteções: DPS, DR e grupos de DR",
-      "Configurando o aterramento: terra individual, circuitos de iluminação, grupos de terra e alimentador",
+      "Lançamento das tomadas",
+      "Importação do projeto luminotécnico em CAD",
+      "Comentários sobre a iluminação e definições prévias",
+      "Lançamento da iluminação",
+      "Iluminação do pavimento superior",
+      "Definição dos interruptores",
+      "Filtros de comandos",
+      "Interruptores do pavimento superior",
+      "Revisão dos IDs por tabela",
+      "Atribuição dos interruptores e finalização da iluminação",
     ],
   },
   {
-    title: "Infraestrutura",
+    title: "Criação e Definição dos Circuitos",
+    lessonsCount: 6,
+    duration: "1h54",
     lessons: [
-      "Lançamento de eletrodutos e conduletes",
-      "Eletrocalhas e perfilados no Revit",
-      "Vinculando modelos de outras disciplinas (estrutura, hidráulica, HVAC)",
-      "Identificando interferências e desviando a infraestrutura elétrica",
+      "Criação dos circuitos pelo método manual",
+      "Revisão das pré-configurações de circuitos",
+      "Definição dos circuitos",
+      "Definição dos circuitos do pavimento superior",
+    ],
+  },
+  {
+    title: "Lançamento de Eletrodutos e Eletrocalhas",
+    lessonsCount: 3,
+    duration: "2h48",
+    lessons: [
+      "Lançamento da infraestrutura — pavimento superior e térreo",
+      "Finalização da infraestrutura e ajustes",
     ],
   },
   {
     title: "Dimensionamentos",
+    lessonsCount: 4,
+    duration: "1h45",
     lessons: [
-      "Dimensionamento dos circuitos com o Pro-Elétrica",
-      "Dimensionamento de infraestrutura",
-      "Impedimentos e personalização do roteamento dos circuitos",
-      "Lançamento da fiação com o Pro-Elétrica",
-      "Gerando legenda de fiação para linhas de chamada maiores",
-      "Cadastro das tabelas da concessionária para o alimentador",
-      "Dimensionamento do alimentador",
-      "Geração dos diagramas unifilar e trifilar",
-      "Geração e personalização do quadro de cargas padrão CAD",
-      "Montagem e detalhamento dos quadros",
+      "Dimensionamento dos circuitos e correções",
+      "Fiação adicional e impedimentos",
+      "Dimensionamento da tubulação",
     ],
   },
   {
-    title: "Documentação e Modelagem",
+    title: "Inserção e Ajustes da Fiação",
+    lessonsCount: 5,
+    duration: "2h55",
     lessons: [
-      "Modelos de vistas e filtros no Revit",
-      "Criando plantas de iluminação e tomadas utilizando filtros",
-      "Criando planta de layout e linhas de cotas",
-      "Tabelas no Revit: quantitativos de eletrocalhas e tomadas de uso específico",
-      "Importação e exportação de tabelas entre Revit e Excel",
-      "Quantitativos do plugin: tabela de cabos e tabela de dispositivos",
-      "Montagem das pranchas e importação de detalhes",
-      "Exportação de pranchas para PDF e DWG",
-      "Gerando o memorial descritivo (Revit V24)",
-      "Limpando, salvando e exportando os arquivos finalizados",
-      "Dicas extras: quadros mono/bi/trifásicos, grupos de carga, hierarquia e filtros de circuitos",
+      "Inserção e ajustes da fiação",
+      "Pequenos ajustes e refinamento do traçado",
+      "Inserindo o medidor, ajustando a infraestrutura e dimensionando por curto-circuito",
+      "Compatibilização com o estrutural e ajustes finais",
+    ],
+  },
+  {
+    title: "Diagramas e Dispositivos de Proteção",
+    lessonsCount: 1,
+    duration: "14 min",
+    lessons: [
+      "Configuração dos dispositivos de proteção (DPS, DR, disjuntores) e geração dos diagramas unifilar e multifilar",
+    ],
+  },
+  {
+    title: "Documentação e Geração das Pranchas",
+    lessonsCount: 4,
+    duration: "1h40",
+    lessons: [
+      "Detalhamentos complementares das pranchas",
+      "Tabelas no Revit: resumo de quantitativos e dispositivos",
+      "Montagem das pranchas finais",
+      "Exportação do projeto pronto (PDF/DWG) e entrega dos arquivos",
     ],
   },
   {
     title: "Criação de Famílias e Personalização",
+    upcoming: true,
+    status: "Em breve",
     lessons: [
       "Anatomia de uma família: categorias, parâmetros e planos de referência",
       "Criando família de equipamento elétrico do zero",
@@ -123,6 +149,8 @@ const COURSE_MODULES = [
   },
   {
     title: "Aulas Extras",
+    upcoming: true,
+    status: "Em breve",
     lessons: [
       "Múltiplos condutores por fase e disjuntores maiores que 125A",
       "Circuitos bifásicos e monofásico na mesma tomada dupla",
@@ -131,6 +159,16 @@ const COURSE_MODULES = [
     ],
   },
 ];
+
+// Resumo do que já está gravado (usado no cabeçalho da grade curricular)
+const COURSE_STATS = {
+  modulesRecorded: 11,
+  lessonsRecorded: 45,
+  hoursRecorded: "mais de 18 horas",
+  upcomingLabel: "E ainda vem mais…",
+  upcomingNote:
+    "Módulos em produção — entram na plataforma sem custo adicional para quem já é aluno.",
+};
 
 // ---------------------------------------------------------------------
 // Recursos automáticos do plugin Pro-Elétrica
@@ -161,28 +199,48 @@ const PLUGIN_FEATURES = [
 // ---------------------------------------------------------------------
 const DEMO_VIDEOS = [
   {
+    // [2] VÍDEO — Apresentação do curso
     title: "Apresentação do curso",
-    // TODO: substituir pela URL de embed do vídeo real (YouTube/Vimeo)
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    thumbnail: "assets/img/detail-placeholder-1.svg",
-    placeholder: true,
+    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // [2a] URL de embed (YouTube/Vimeo)
+    thumbnail: "assets/img/detail-placeholder-1.svg",      // [2b] capa do card
+    placeholder: true,                                     // trocar para false quando o vídeo for real
   },
   {
+    // [3] VÍDEO — Prévia de uma aula (Dimensionamentos)
     title: "Prévia de uma aula do módulo de Dimensionamentos",
-    // TODO: substituir pela URL de embed do vídeo real (YouTube/Vimeo)
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    thumbnail: "assets/img/detail-placeholder-3.svg",
-    placeholder: true,
+    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // [3a] URL de embed (YouTube/Vimeo)
+    thumbnail: "assets/img/detail-placeholder-3.svg",      // [3b] capa do card
+    placeholder: true,                                     // trocar para false quando o vídeo for real
   },
 ];
 
 const DEMO_PDFS = [
   {
-    title: "Pranchas do projeto completo — do zero à entrega",
-    // Link real já usado no site atual (Google Drive)
-    embedUrl: "https://drive.google.com/file/d/1HSIj19T5P4LHCmdzV2ZglgqDaCa_cJRn/preview",
-    downloadUrl: "https://drive.google.com/file/d/1HSIj19T5P4LHCmdzV2ZglgqDaCa_cJRn/view?usp=drive_link",
-    thumbnail: "assets/img/detail-placeholder-2.svg",
+    title: "Prancha 1 — Projeto Elétrico (térreo e superior)",
+    embedUrl: "assets/docs/projeto-eletrico.pdf",
+    downloadUrl: "assets/docs/projeto-eletrico.pdf",
+    thumbnail: "assets/img/pdf-thumbs/projeto-eletrico.png",
+    placeholder: false,
+  },
+  {
+    title: "Prancha 2 — Layout e Detalhes",
+    embedUrl: "assets/docs/layout-e-detalhes.pdf",
+    downloadUrl: "assets/docs/layout-e-detalhes.pdf",
+    thumbnail: "assets/img/pdf-thumbs/layout-e-detalhes.png",
+    placeholder: false,
+  },
+  {
+    title: "Prancha 3 — Diagramas e Quantitativos",
+    embedUrl: "assets/docs/diagramas-e-quantitativos.pdf",
+    downloadUrl: "assets/docs/diagramas-e-quantitativos.pdf",
+    thumbnail: "assets/img/pdf-thumbs/diagramas-e-quantitativos.png",
+    placeholder: false,
+  },
+  {
+    title: "Prancha 4 — Vista 3D Geral",
+    embedUrl: "assets/docs/vista-3d-geral.pdf",
+    downloadUrl: "assets/docs/vista-3d-geral.pdf",
+    thumbnail: "assets/img/pdf-thumbs/vista-3d-geral.png",
     placeholder: false,
   },
 ];
