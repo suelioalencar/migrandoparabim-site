@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-label="Migrando para BIM 2.0 — oferta de lançamento com 20% de desconto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-label="Migrando para BIM 2.0 — oferta de lançamento com 30% de desconto">
   <title>Migrando para BIM 2.0 — oferta de lançamento (feed 4:5)</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -65,7 +65,7 @@
   <g transform="translate(880,420)" filter="url(#softShadow)">
     <circle r="108" fill="#ffd400"/>
     <text x="0" y="-4" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
-          font-weight="800" font-size="60" fill="#0f2439">20%</text>
+          font-weight="800" font-size="60" fill="#0f2439">30%</text>
     <text x="0" y="44" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
           font-weight="800" font-size="36" letter-spacing="3" fill="#0f2439">OFF</text>
   </g>
@@ -82,8 +82,8 @@
   <!-- preço -->
   <g text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif">
     <text x="540" y="866" font-weight="600" font-size="32" fill="#7c93a5" text-decoration="line-through">De R$ 649,00</text>
-    <text x="540" y="954" font-weight="800" font-size="72" fill="#ffd400">12x de R$ 53,70</text>
-    <text x="540" y="1006" font-weight="500" font-size="31" fill="#dbe9f4">ou R$ 519,20 à vista</text>
+    <text x="540" y="954" font-weight="800" font-size="72" fill="#ffd400">12x de R$ 46,98</text>
+    <text x="540" y="1006" font-weight="500" font-size="31" fill="#dbe9f4">ou R$ 454,30 à vista</text>
   </g>
 
   <!-- cupom -->
@@ -93,18 +93,18 @@
     <text x="46" y="56" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
           font-size="26" letter-spacing="2" fill="#a9c2d3">CUPOM</text>
     <text x="186" y="57" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800"
-          font-size="36" letter-spacing="2.5" fill="#ffd400">LANCAMENTO20MB</text>
+          font-size="36" letter-spacing="2.5" fill="#ffd400">LANCAMENTOMB2</text>
   </g>
 
   <!-- selos -->
   <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="19" letter-spacing="1">
     <g transform="translate(24,1180)">
       <rect width="336" height="56" rx="28" fill="#16324a" stroke="#24425e"/>
-      <text x="168" y="35" text-anchor="middle" fill="#eaf2f8">9 MÓDULOS GRAVADOS</text>
+      <text x="168" y="35" text-anchor="middle" fill="#eaf2f8">11 MÓDULOS GRAVADOS</text>
     </g>
     <g transform="translate(372,1180)">
       <rect width="336" height="56" rx="28" fill="#16324a" stroke="#24425e"/>
-      <text x="168" y="35" text-anchor="middle" fill="#eaf2f8">38 AULAS · +14H</text>
+      <text x="168" y="35" text-anchor="middle" fill="#eaf2f8">45 AULAS · +18H</text>
     </g>
     <g transform="translate(720,1180)">
       <rect width="336" height="56" rx="28" fill="#16324a" stroke="#24425e"/>
