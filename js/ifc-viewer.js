@@ -104,23 +104,53 @@
       const model = gltf.scene;
       scene.add(model);
 
-      // enquadra a câmera no modelo, seja qual for a escala/posição de origem
       const box = new THREE.Box3().setFromObject(model);
-      const size = box.getSize(new THREE.Vector3());
-      const center = box.getCenter(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z) || 1;
-      const dist = maxDim * 1.6;
+      const sphere = box.getBoundingSphere(new THREE.Sphere());
+      const center = sphere.center;
+      const radius = sphere.radius || 1;
+      const maxDim = Math.max(...box.getSize(new THREE.Vector3()).toArray()) || 1;
 
-      camera.position.set(
-        center.x + dist * 0.62,
-        center.y + dist * 0.55,
-        center.z + dist * 0.62
-      );
+      // O eixo de rotação (target do OrbitControls) fica travado no quadro
+      // de distribuição elétrica, não no centro geométrico de todo o
+      // modelo — assim, ao arrastar, o giro acontece ao redor do quadro,
+      // que é a peça de referência do projeto.
+      const PANEL_NODE_NAME = "IfcBuildingElementProxy_71326"; // Quadro de Distribuição TIGRE
+      const panel = model.getObjectByName(PANEL_NODE_NAME);
+      const orbitTarget = panel
+        ? new THREE.Box3().setFromObject(panel).getCenter(new THREE.Vector3())
+        : center;
+
+      // Enquadra a câmera olhando sempre para o orbitTarget (o quadro), mas
+      // calculando a distância para que a esfera que envolve o modelo
+      // inteiro caiba no enquadramento mesmo com esse alvo descentralizado
+      // (o quadro não fica no meio geométrico do modelo). Projetamos o
+      // deslocamento entre o centro do modelo e o alvo nos eixos direita/
+      // cima da câmera e resolvemos a distância mínima que ainda enxerga a
+      // esfera inteira nos dois eixos do FOV (vertical e horizontal).
+      const dir = new THREE.Vector3(0.62, 0.55, 0.62).normalize(); // direção câmera->alvo
+      const forward = dir.clone().negate(); // alvo->além, "pra dentro" da cena
+      const worldUp = new THREE.Vector3(0, 1, 0);
+      const right = new THREE.Vector3().crossVectors(forward, worldUp).normalize();
+      const trueUp = new THREE.Vector3().crossVectors(right, forward).normalize();
+
+      const offset = center.clone().sub(orbitTarget);
+      const alongForward = offset.dot(forward);
+      const transverseRight = Math.abs(offset.dot(right));
+      const transverseUp = Math.abs(offset.dot(trueUp));
+
+      const vFov = THREE.MathUtils.degToRad(camera.fov);
+      const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+
+      const distForV = (transverseUp + radius) / Math.tan(vFov / 2) - alongForward;
+      const distForH = (transverseRight + radius) / Math.tan(hFov / 2) - alongForward;
+      const dist = Math.max(distForV, distForH, radius) * 1.08; // pequena margem
+
+      camera.position.copy(orbitTarget).addScaledVector(dir, dist);
       camera.near = maxDim / 100;
       camera.far = maxDim * 100;
       camera.updateProjectionMatrix();
 
-      controls.target.copy(center);
+      controls.target.copy(orbitTarget);
       controls.update();
 
       function onResize() {
