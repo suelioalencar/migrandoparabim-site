@@ -103,6 +103,13 @@
       });
 
       const model = gltf.scene;
+
+      // O IFC/Revit usa Z como "para cima" (convenção do BIM); o three.js
+      // usa Y. Como a exportação não converteu os eixos, o prédio vinha
+      // "deitado" e era exibido em pé (a altura real virava profundidade
+      // e o comprimento real virava altura). Rotacionamos -90° em X para
+      // Z virar Y, deixando o modelo na orientação correta.
+      model.rotation.x = -Math.PI / 2;
       scene.add(model);
 
       const box = new THREE.Box3().setFromObject(model);
