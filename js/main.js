@@ -182,8 +182,8 @@
    */
   (function () {
     const PROMO = {
-      start: new Date(2026, 8, 13, 0, 0, 0),  // 13/09/2026 00:00 (mês 0-indexado: 8 = setembro)
-      end:   new Date(2026, 8, 20, 0, 0, 0),  // expira à meia-noite de 20/09 → válido até 19/09 23:59
+      start: new Date(2026, 8, 20, 0, 0, 0),  // 20/09/2026 00:00 (mês 0-indexado: 8 = setembro)
+      end:   new Date(2026, 9, 1, 0, 0, 0),   // expira à meia-noite de 01/10 → válido até 30/09 23:59
     };
     const now = new Date();
     const active = now >= PROMO.start && now < PROMO.end;
