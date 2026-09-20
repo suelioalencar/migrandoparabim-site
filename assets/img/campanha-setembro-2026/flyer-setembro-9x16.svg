@@ -100,11 +100,11 @@
   <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="21" letter-spacing="1">
     <g transform="translate(120,1648)">
       <rect width="400" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
-      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">11 MÓDULOS GRAVADOS</text>
+      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">12 MÓDULOS GRAVADOS</text>
     </g>
     <g transform="translate(560,1648)">
       <rect width="400" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
-      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">45 AULAS · +18H</text>
+      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">51 AULAS · +20H</text>
     </g>
     <g transform="translate(340,1724)">
       <rect width="400" height="60" rx="30" fill="#ffd400"/>

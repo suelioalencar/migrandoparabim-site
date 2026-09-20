@@ -36,11 +36,13 @@ const COURSE_MODULES = [
   },
   {
     title: "Criando o Projeto Elétrico",
-    lessonsCount: 3,
-    duration: "52 min",
+    lessonsCount: 5,
+    duration: "1h14",
     lessons: [
       "Configurando a arquitetura no Revit",
       "Iniciando o projeto a partir do projeto em CAD",
+      "Dicas para trabalhar com arquivos DWG",
+      "Modelando a arquitetura básica (opcional)",
       "Iniciando o projeto a partir da arquitetura em IFC",
     ],
   },
@@ -122,13 +124,24 @@ const COURSE_MODULES = [
   },
   {
     title: "Documentação e Geração das Pranchas",
-    lessonsCount: 4,
-    duration: "1h40",
+    lessonsCount: 6,
+    duration: "2h57",
     lessons: [
-      "Detalhamentos complementares das pranchas",
-      "Tabelas no Revit: resumo de quantitativos e dispositivos",
+      "Detalhamentos — parte 1",
+      "Inserção de suportes e ajustes",
+      "Detalhamentos — parte 2",
+      "Compatibilizando interiores",
       "Montagem das pranchas finais",
       "Exportação do projeto pronto (PDF/DWG) e entrega dos arquivos",
+    ],
+  },
+  {
+    title: "Tabelas no Revit",
+    lessonsCount: 2,
+    duration: "39 min",
+    lessons: [
+      "Tabelas no Revit: resumo de quantitativos e dispositivos",
+      "Criando tabelas para contabilizar os suportes de eletrocalhas",
     ],
   },
   {
@@ -162,9 +175,9 @@ const COURSE_MODULES = [
 
 // Resumo do que já está gravado (usado no cabeçalho da grade curricular)
 const COURSE_STATS = {
-  modulesRecorded: 11,
-  lessonsRecorded: 45,
-  hoursRecorded: "mais de 18 horas",
+  modulesRecorded: 12,
+  lessonsRecorded: 51,
+  hoursRecorded: "mais de 20 horas",
   upcomingLabel: "E ainda vem mais…",
   upcomingNote:
     "Módulos em produção — entram na plataforma sem custo adicional para quem já é aluno.",
