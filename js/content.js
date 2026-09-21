@@ -12,7 +12,7 @@
 
 // ---------------------------------------------------------------------
 // Módulos do curso
-// Espelha as aulas já gravadas em "Aulas Editadas/Clipchamp".
+// Espelha as aulas já gravadas em "Aulas Editadas/Prontas".
 // `lessonsCount` = nº real de vídeos; `duration` = soma das durações.
 // Aulas divididas em "Parte 1/2/3" aparecem agrupadas num assunto só.
 // ---------------------------------------------------------------------
@@ -87,7 +87,7 @@ const COURSE_MODULES = [
   {
     title: "Lançamento de Eletrodutos e Eletrocalhas",
     lessonsCount: 3,
-    duration: "2h48",
+    duration: "3h11",
     lessons: [
       "Lançamento da infraestrutura — pavimento superior e térreo",
       "Finalização da infraestrutura e ajustes",
@@ -177,7 +177,7 @@ const COURSE_MODULES = [
 const COURSE_STATS = {
   modulesRecorded: 12,
   lessonsRecorded: 51,
-  hoursRecorded: "mais de 20 horas",
+  hoursRecorded: "mais de 21 horas",
   upcomingLabel: "E ainda vem mais…",
   upcomingNote:
     "Módulos em produção — entram na plataforma sem custo adicional para quem já é aluno.",
