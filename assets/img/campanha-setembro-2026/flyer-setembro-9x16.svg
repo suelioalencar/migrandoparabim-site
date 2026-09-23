@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" role="img" aria-label="Migrando para BIM 2.0 — oferta de setembro com 20% de desconto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" role="img" aria-label="Migre de vez para o Revit com o curso Migrando para BIM 2.0 — 20% de desconto">
   <title>Migrando para BIM 2.0 — oferta de setembro (stories 9:16)</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0"    stop-color="#0f2439"/>
+      <stop offset="0" stop-color="#0f2439"/>
       <stop offset="0.55" stop-color="#0a1826"/>
-      <stop offset="1"    stop-color="#081320"/>
+      <stop offset="1" stop-color="#081320"/>
     </linearGradient>
     <radialGradient id="glowBlue" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0" stop-color="#1481b8" stop-opacity="0.5"/>
       <stop offset="1" stop-color="#1481b8" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowWarm" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffd400" stop-opacity="0.15"/>
-      <stop offset="1" stop-color="#ffd400" stop-opacity="0"/>
-    </radialGradient>
     <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
       <path d="M48 0H0V48" fill="none" stroke="#7fb8dc" stroke-opacity="0.06" stroke-width="1"/>
     </pattern>
-    <linearGradient id="bimGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#7fb8dc"/>
-      <stop offset="1" stop-color="#bfe0f2"/>
-    </linearGradient>
     <linearGradient id="ruleGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0"   stop-color="#ffd400" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffd400" stop-opacity="0.95"/>
-      <stop offset="1"   stop-color="#ffd400" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffd400" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#1481b8" stop-opacity="0"/>
     </linearGradient>
     <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000000" flood-opacity="0.5"/>
     </filter>
     <filter id="boltGlow" x="-70%" y="-70%" width="240%" height="240%">
       <feGaussianBlur stdDeviation="9" result="b"/>
@@ -38,20 +29,18 @@
 
   <rect width="1080" height="1920" fill="url(#bg)"/>
   <rect width="1080" height="1920" fill="url(#grid)"/>
-  <ellipse cx="180"  cy="260"  rx="760" ry="760" fill="url(#glowBlue)"/>
-  <ellipse cx="920"  cy="1760" rx="620" ry="600" fill="url(#glowWarm)"/>
+  <ellipse cx="860" cy="330" rx="440" ry="360" fill="url(#glowBlue)"/>
   <rect x="0" y="0" width="1080" height="8" fill="#ffd400"/>
 
   <!-- eyebrow (dentro da área segura do stories) -->
-  <g transform="translate(314,296)">
-    <rect x="0" y="0" width="452" height="60" rx="30" fill="#ffd400"/>
-    <text x="226" y="40" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
-          font-weight="800" font-size="23" letter-spacing="2.6" fill="#0f2439">OFERTA DE SETEMBRO</text>
+  <g transform="translate(64,220)">
+    <rect x="0" y="0" width="450" height="56" rx="28" fill="#ffd400"/>
+    <text x="225" y="37" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
+          font-weight="800" font-size="22" letter-spacing="2" fill="#0f2439">MIGRANDO PARA BIM 2.0</text>
   </g>
 
-  <!-- marca -->
-  <ellipse cx="540" cy="590" rx="400" ry="360" fill="url(#glowBlue)" opacity="0.9"/>
-  <g transform="translate(344.7,403.3) scale(1.9)" filter="url(#softShadow)">
+  <!-- ícone + selo -->
+  <g transform="translate(780,340) scale(0.78)" filter="url(#softShadow)">
     <g transform="matrix(0.9,0,0,0.9,-5.23467,-4.728774)">
       <rect x="20" y="90" width="150" height="150" rx="14" fill="#7fb8dc"/>
       <rect x="45" y="55" width="150" height="150" rx="14" fill="#1481b8"/>
@@ -60,58 +49,76 @@
             fill="#ffd400" stroke="#0a1826" stroke-width="3" stroke-linejoin="round" filter="url(#boltGlow)"/>
     </g>
   </g>
-
-  <!-- selo -->
-  <g transform="translate(872,780)" filter="url(#softShadow)">
-    <circle r="118" fill="#ffd400"/>
-    <text x="0" y="-4" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
-          font-weight="800" font-size="66" fill="#0f2439">20%</text>
-    <text x="0" y="48" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
-          font-weight="800" font-size="40" letter-spacing="3" fill="#0f2439">OFF</text>
+  <g transform="translate(975,542)" filter="url(#softShadow)">
+    <circle r="102" fill="#ffd400"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
+          font-weight="800" font-size="56" fill="#0f2439">20%</text>
+    <text x="0" y="40" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
+          font-weight="800" font-size="32" letter-spacing="3" fill="#0f2439">OFF</text>
   </g>
 
-  <!-- título -->
-  <g text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" letter-spacing="-1">
-    <text x="540" y="1000" font-weight="800" font-size="64" fill="#f4f7fa">MIGRANDO PARA</text>
-    <text x="540" y="1128" font-weight="800" font-size="110" fill="url(#bimGrad)">BIM <tspan fill="#ffd400">2.0</tspan></text>
-    <text x="540" y="1190" font-weight="600" font-size="38" letter-spacing="0" fill="#a9c2d3">com Revit + <tspan fill="#7fb8dc">Pro-Elétrica</tspan></text>
+  <!-- headline -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800" letter-spacing="-1">
+    <text x="64" y="680" font-size="60" fill="#f4f7fa">Chega de refazer</text>
+    <text x="64" y="748" font-size="60" fill="#f4f7fa">o projeto elétrico</text>
+    <text x="64" y="816" font-size="60" fill="#f4f7fa"><tspan fill="#ffd400">inteiro</tspan> a cada</text>
+    <text x="64" y="884" font-size="60" fill="#f4f7fa">revisão.</text>
   </g>
 
-  <rect x="290" y="1234" width="500" height="4" rx="2" fill="url(#ruleGrad)"/>
+  <rect x="64" y="922" width="500" height="4" rx="2" fill="url(#ruleGrad)"/>
+
+  <text x="64" y="980" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+        font-size="28" fill="#8fa7b8" text-decoration="line-through">Projeto no CAD, contagem de</text>
+  <text x="64" y="1016" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+        font-size="28" fill="#8fa7b8" text-decoration="line-through">material na mão.</text>
+
+  <text x="64" y="1084" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700"
+        font-size="36" fill="#dbe9f4">Migre de vez para o <tspan fill="#7fb8dc">Revit</tspan></text>
+  <text x="64" y="1132" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700"
+        font-size="36" fill="#dbe9f4">com o curso mais completo</text>
+  <text x="64" y="1180" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700"
+        font-size="36" fill="#dbe9f4">do mercado.</text>
+  <text x="64" y="1228" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="500"
+        font-size="28" fill="#8fa7b8">Do zero à entrega, com o plugin Pro-Elétrica.</text>
+
+  <!-- chips -->
+  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="21" letter-spacing="0.6">
+    <g transform="translate(64,1288)">
+      <rect width="390" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
+      <text x="195" y="39" text-anchor="middle" fill="#eaf2f8">12 MÓDULOS · 51 AULAS</text>
+    </g>
+    <g transform="translate(474,1288)">
+      <rect width="270" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
+      <text x="135" y="39" text-anchor="middle" fill="#eaf2f8">+21H DE CURSO</text>
+    </g>
+    <g transform="translate(64,1366)">
+      <rect width="300" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
+      <text x="150" y="39" text-anchor="middle" fill="#eaf2f8">ACESSO VITALÍCIO</text>
+    </g>
+    <g transform="translate(394,1366)">
+      <rect width="290" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
+      <text x="145" y="39" text-anchor="middle" fill="#eaf2f8">GARANTIA 7 DIAS</text>
+    </g>
+  </g>
 
   <!-- preço -->
-  <g text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif">
-    <text x="540" y="1310" font-weight="600" font-size="34" fill="#7c93a5" text-decoration="line-through">De R$ 649,00</text>
-    <text x="540" y="1406" font-weight="800" font-size="76" fill="#ffd400">12x de R$ 53,70</text>
-    <text x="540" y="1462" font-weight="500" font-size="33" fill="#dbe9f4">ou R$ 519,20 à vista</text>
-  </g>
+  <text x="64" y="1500" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+        font-size="30" fill="#7c93a5" text-decoration="line-through">De R$ 649,00</text>
+  <text x="64" y="1576" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800"
+        font-size="68" fill="#ffd400">12x de R$ 53,70</text>
+  <text x="64" y="1624" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="500"
+        font-size="29" fill="#dbe9f4">ou R$ 519,20 à vista</text>
 
   <!-- cupom -->
-  <g transform="translate(180,1508)">
-    <rect x="0" y="0" width="720" height="94" rx="20" fill="#ffd400" fill-opacity="0.1"
+  <g transform="translate(64,1668)">
+    <rect x="0" y="0" width="660" height="90" rx="18" fill="#ffd400" fill-opacity="0.1"
           stroke="#ffd400" stroke-width="2" stroke-dasharray="12 9"/>
-    <text x="48" y="60" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
-          font-size="27" letter-spacing="2" fill="#a9c2d3">CUPOM</text>
-    <text x="196" y="61" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800"
-          font-size="38" letter-spacing="2.5" fill="#ffd400">SETEMBRO20OFF</text>
+    <text x="32" y="36" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="600"
+          font-size="22" letter-spacing="1.8" fill="#a9c2d3">CUPOM DE SETEMBRO</text>
+    <text x="32" y="70" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="800"
+          font-size="34" letter-spacing="2.3" fill="#ffd400">SETEMBRO20OFF</text>
   </g>
 
-  <!-- selos (2 linhas, mais folga nas laterais) -->
-  <g font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="21" letter-spacing="1">
-    <g transform="translate(120,1648)">
-      <rect width="400" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
-      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">12 MÓDULOS GRAVADOS</text>
-    </g>
-    <g transform="translate(560,1648)">
-      <rect width="400" height="60" rx="30" fill="#16324a" stroke="#24425e"/>
-      <text x="200" y="38" text-anchor="middle" fill="#eaf2f8">51 AULAS · +21H</text>
-    </g>
-    <g transform="translate(340,1724)">
-      <rect width="400" height="60" rx="30" fill="#ffd400"/>
-      <text x="200" y="38" text-anchor="middle" fill="#0f2439">ACESSO VITALÍCIO</text>
-    </g>
-  </g>
-
-  <text x="540" y="1836" text-anchor="middle" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
-        font-weight="700" font-size="28" letter-spacing="1.2" fill="#7fb8dc">migrandoparabim.com.br</text>
+  <text x="64" y="1812" font-family="Montserrat, Poppins, 'Segoe UI', Arial, sans-serif"
+        font-weight="700" font-size="28" letter-spacing="1" fill="#7fb8dc">migrandoparabim.com.br</text>
 </svg>
