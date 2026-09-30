@@ -169,30 +169,87 @@
 
   /* ---------------- Oferta por tempo limitado ----------------
    * O site é estático (sem backend), então quem garante que a oferta
-   * "some" sozinha depois do prazo é este bloco: ele lê a data do
-   * navegador e decide, a cada carregamento, se mostra os elementos
-   * marcados com [data-promo-only] (preço com desconto, barra do topo,
-   * selo no hero) ou os marcados com [data-regular-only] (preço cheio).
-   * Os elementos de oferta já nascem com "hidden" no HTML — se por
-   * algum motivo este script não rodar, o site cai no preço normal,
-   * nunca no desconto indevido.
+   * "some" sozinha depois do prazo — e que a campanha seguinte "nasce"
+   * sozinha no minuto certo, sem precisar de deploy na hora — é este
+   * bloco: ele lê a data do navegador a cada carregamento e decide qual
+   * campanha (se alguma) está dentro da sua janela [start, end).
    *
-   * Para trocar a campanha depois: mexa só em PROMO (datas, cupom %)
-   * e nos textos/valores dos elementos [data-promo-only] no HTML.
+   * Os elementos de oferta ([data-promo-only]) já nascem com "hidden"
+   * no HTML e só têm seu texto preenchido e ficam visíveis se alguma
+   * campanha estiver ativa; os de preço cheio ([data-regular-only]) já
+   * nascem visíveis. Se por algum motivo este script não rodar, o site
+   * cai no preço normal, nunca num desconto indevido ou desatualizado.
+   *
+   * Para adicionar a campanha do mês seguinte: só acrescente um novo
+   * objeto no fim de CAMPAIGNS (a janela de cada uma não deve se
+   * sobrepor à da vizinha).
    */
   (function () {
-    const PROMO = {
-      start: new Date(2026, 8, 20, 0, 0, 0),  // 20/09/2026 00:00 (mês 0-indexado: 8 = setembro)
-      end:   new Date(2026, 9, 1, 0, 0, 0),   // expira à meia-noite de 01/10 → válido até 30/09 23:59
-    };
+    const CAMPAIGNS = [
+      {
+        // Setembro/2026 — 20% OFF
+        start: new Date(2026, 8, 20, 0, 0, 0), // 20/09/2026 00:00 (mês 0-indexado: 8 = set.)
+        end:   new Date(2026, 9, 1, 0, 0, 0),  // expira à meia-noite de 01/10 → válido até 30/09 23:59
+        coupon: "SETEMBRO20OFF",
+        flag: "🔥 Oferta de setembro",
+        pctLabel: "20% OFF",
+        heroTrust: "🔥 20% OFF em setembro",
+        note: "só até 30/09 · já aplicado no checkout",
+        badge: "Turma 2.0 — oferta de setembro",
+        offLabel: "−20% em setembro",
+        priceNew: "12x de R$ 53,70",
+        priceCash: "ou R$ 519,20 à vista",
+        couponLabel: "Cupom de setembro · válido só até 30/09",
+      },
+      {
+        // Outubro/2026 — 15% OFF
+        start: new Date(2026, 9, 1, 0, 0, 0),   // 01/10/2026 00:00
+        end:   new Date(2026, 10, 1, 0, 0, 0),  // expira à meia-noite de 01/11 → válido até 31/10 23:59
+        coupon: "OUTUBRO15",
+        flag: "🔥 Oferta de outubro",
+        pctLabel: "15% OFF",
+        heroTrust: "🔥 15% OFF em outubro",
+        note: "só até 31/10 · já aplicado no checkout",
+        badge: "Turma 2.0 — oferta de outubro",
+        offLabel: "−15% em outubro",
+        priceNew: "12x de R$ 57,05",
+        priceCash: "ou R$ 551,65 à vista",
+        couponLabel: "Cupom de outubro · válido só até 31/10",
+      },
+    ];
+
     const now = new Date();
-    const active = now >= PROMO.start && now < PROMO.end;
+    const campaign = CAMPAIGNS.find((c) => now >= c.start && now < c.end);
+    const active = !!campaign;
 
     document.querySelectorAll("[data-promo-only]").forEach((el) => { el.hidden = !active; });
     document.querySelectorAll("[data-regular-only]").forEach((el) => { el.hidden = active; });
 
     if (active) {
+      const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+      setText("promoFlag", campaign.flag);
+      setText("promoPct", campaign.pctLabel);
+      setText("promoNote", campaign.note);
+      setText("heroTrustPromo", campaign.heroTrust);
+      setText("pricingBadgePromo", campaign.badge);
+      setText("priceOffLabel", campaign.offLabel);
+      setText("priceNew", campaign.priceNew);
+      setText("priceCash", campaign.priceCash);
+      setText("couponLabel", campaign.couponLabel);
+
+      ["promoCouponBtn", "couponCodeBtn"].forEach((id) => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.dataset.coupon = campaign.coupon;
+        const textEl = btn.querySelector(".coupon-text");
+        if (textEl) textEl.textContent = campaign.coupon;
+      });
+
       document.querySelectorAll("a.js-buy-link[data-coupon]").forEach((a) => {
+        a.dataset.coupon = campaign.coupon;
         const url = new URL(a.href);
         url.searchParams.set("coupon", a.dataset.coupon);
         a.href = url.toString();

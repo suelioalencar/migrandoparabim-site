@@ -27,12 +27,12 @@
      (main.js) se a data de hoje estiver dentro da janela definida em PROMO. -->
 <div class="promo-bar" data-promo-only hidden>
   <div class="container promo-bar-inner">
-    <span class="promo-flag">🔥 Oferta de setembro</span>
-    <span class="promo-text"><strong>20% OFF</strong> com o cupom</span>
-    <button class="promo-code" type="button" data-coupon="SETEMBRO20OFF" title="Copiar cupom">
-      SETEMBRO20OFF <span class="promo-copy">copiar</span>
+    <span class="promo-flag" id="promoFlag">🔥 Oferta do mês</span>
+    <span class="promo-text"><strong id="promoPct">OFF</strong> com o cupom</span>
+    <button class="promo-code" id="promoCouponBtn" type="button" data-coupon="" title="Copiar cupom">
+      <span class="coupon-text"></span> <span class="promo-copy">copiar</span>
     </button>
-    <span class="promo-note">só até 30/09 · já aplicado no checkout</span>
+    <span class="promo-note" id="promoNote"></span>
   </div>
 </div>
 
@@ -84,7 +84,7 @@
           <a class="btn btn-ghost btn-lg" href="#demonstracao">Ver demonstração ▶</a>
         </div>
         <ul class="hero-trust">
-          <li data-promo-only hidden>🔥 20% OFF em setembro</li>
+          <li data-promo-only hidden id="heroTrustPromo">🔥 Oferta do mês</li>
           <li>🎓 Mais de 200 alunos na v1.0</li>
           <li>✔ Acesso vitalício</li>
           <li>✔ 7 dias de garantia</li>
@@ -244,24 +244,24 @@
   <section id="preco" class="section">
     <div class="container">
       <div class="pricing-card">
-        <div class="pricing-badge" data-promo-only hidden>Turma 2.0 — oferta de setembro</div>
+        <div class="pricing-badge" data-promo-only hidden id="pricingBadgePromo">Turma 2.0 — oferta do mês</div>
         <div class="pricing-badge" data-regular-only>Turma 2.0</div>
         <h2>Invista na sua migração para BIM</h2>
         <p class="section-lead">
           Acesso vitalício ao treinamento completo + 6 meses de acesso ao Plugin Pro-Elétrica para Revit.
         </p>
 
-        <!-- preço com a oferta de setembro (20% OFF, cupom SETEMBRO20OFF) -->
+        <!-- preço com a oferta do mês (texto/valores preenchidos via JS a partir de CAMPAIGNS, em main.js) -->
         <div class="price-box" data-promo-only hidden>
           <span class="price-old">De R$ 649,00</span>
-          <span class="price-off">−20% em setembro</span>
-          <span class="price-new">12x de R$ 53,70</span>
-          <span class="price-cash">ou R$ 519,20 à vista</span>
+          <span class="price-off" id="priceOffLabel"></span>
+          <span class="price-new" id="priceNew"></span>
+          <span class="price-cash" id="priceCash"></span>
         </div>
         <div class="coupon-box" data-promo-only hidden>
-          <span class="coupon-label">Cupom de setembro · válido só até 30/09</span>
-          <button class="coupon-code" type="button" data-coupon="SETEMBRO20OFF" title="Copiar cupom">
-            SETEMBRO20OFF <span class="coupon-copy">copiar</span>
+          <span class="coupon-label" id="couponLabel"></span>
+          <button class="coupon-code" id="couponCodeBtn" type="button" data-coupon="" title="Copiar cupom">
+            <span class="coupon-text"></span> <span class="coupon-copy">copiar</span>
           </button>
           <span class="coupon-hint">O desconto já entra aplicado ao clicar no botão abaixo.</span>
         </div>
