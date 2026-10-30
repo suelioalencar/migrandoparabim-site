@@ -746,3 +746,83 @@ body {
   .logo-text-full { display: none; }
   .header-inner { height: 64px; }
 }
+
+/* =========================================================================
+   Página de captura — /aula-gratis/
+   ========================================================================= */
+.lp-hero { padding: 56px 0 72px; }
+.lp-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 48px;
+  align-items: start;
+}
+.lp-copy, .lp-card { min-width: 0; }
+.lp-hero h1 { font-size: clamp(1.85rem, 3.6vw, 2.8rem); font-weight: 800; color: var(--text); }
+.lp-list { display: flex; flex-direction: column; gap: 12px; margin: 26px 0 22px; }
+.lp-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+.lp-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--yellow);
+  font-weight: 700;
+}
+.lp-list strong { color: var(--text); }
+.lp-audience { color: var(--text-dim); font-size: .95rem; max-width: 56ch; }
+.lp-audience strong { color: var(--text-muted); }
+
+.lp-card {
+  position: sticky;
+  top: 100px;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  box-shadow: var(--shadow);
+}
+.lp-card h2 { font-size: 1.35rem; margin-bottom: 8px; }
+.lp-card-sub { color: var(--text-muted); font-size: .95rem; margin-bottom: 20px; }
+.lp-form { display: flex; flex-direction: column; gap: 10px; }
+.lp-form label { font-size: .85rem; font-weight: 600; color: var(--text-muted); }
+.lp-form label span { font-weight: 400; color: var(--text-dim); }
+.lp-form input {
+  width: 100%;
+  padding: .85em 1em;
+  font: inherit;
+  color: var(--text);
+  background: var(--navy-900);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.lp-form input:focus { outline: 2px solid var(--blue-light); outline-offset: 1px; }
+.lp-submit { width: 100%; justify-content: center; margin-top: 6px; white-space: normal; text-align: center; }
+.lp-fine { margin: 16px 0 0; font-size: .78rem; color: var(--text-dim); line-height: 1.5; }
+
+.lp-teacher { padding: 24px 0 72px; }
+.lp-teacher-box {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+}
+.lp-teacher-box img { flex: none; border-radius: 12px; }
+.lp-teacher-box h3 { margin-bottom: 6px; }
+.lp-teacher-box p { color: var(--text-muted); font-size: .96rem; margin-bottom: 14px; }
+.lp-teacher-box strong { color: var(--text); }
+
+@media (max-width: 860px) {
+  .lp-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .lp-card { position: static; }
+  .lp-teacher-box { flex-direction: column; }
+}

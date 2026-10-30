@@ -111,6 +111,7 @@
     modalBody.innerHTML = `<iframe src="${embedUrl}" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>`;
     modalDialog.classList.toggle("is-doc", isDoc);
     modalBody.classList.toggle("is-doc", isDoc);
+    if (kind === "video" && window.mbTrack) window.mbTrack("VideoPlay", { content_name: "Apresentação do curso" }, true);
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -255,6 +256,51 @@
         a.href = url.toString();
       });
     }
+  })();
+
+  /* ---------------- Rastreamento (Pixel do Meta + UTMs) ----------------
+   * - UTMs: repassa utm_* da URL de entrada para os links de compra da
+   *   Kiwify, que registra a origem de cada venda no relatório dela.
+   * - InitiateCheckout: clique em qualquer botão de compra.
+   * - ViewContent: rolou 50% da página (visitante realmente interessado).
+   * O Pixel base e window.mbTrack vêm de js/pixel.js.
+   */
+  (function () {
+    const track = (name, params, custom) => { if (window.mbTrack) window.mbTrack(name, params, custom); };
+
+    // UTMs de entrada -> links de compra
+    const incoming = new URLSearchParams(window.location.search);
+    const utms = [];
+    incoming.forEach((value, key) => { if (/^utm_/i.test(key) && value) utms.push([key.toLowerCase(), value]); });
+    if (utms.length) {
+      document.querySelectorAll("a.js-buy-link").forEach((a) => {
+        try {
+          const url = new URL(a.href);
+          utms.forEach(([k, v]) => url.searchParams.set(k, v));
+          a.href = url.toString();
+        } catch (e) { /* link inválido: ignora */ }
+      });
+    }
+
+    // clique em comprar
+    document.addEventListener("click", (e) => {
+      const buy = e.target.closest && e.target.closest("a.js-buy-link");
+      if (buy) track("InitiateCheckout", { content_name: "Migrando para BIM 2.0", currency: "BRL" });
+    });
+
+    // 50% de rolagem (uma vez por visita)
+    let viewed = false;
+    const onScroll = () => {
+      if (viewed) return;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= 0.5) {
+        viewed = true;
+        window.removeEventListener("scroll", onScroll);
+        track("ViewContent", { content_name: "Página de vendas — 50% de rolagem" });
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
   })();
 
   /* ---------------- Tabs (vídeos / pdfs) ---------------- */
