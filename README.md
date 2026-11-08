@@ -1,14 +1,18 @@
 # Migrando para BIM 2.0 — site
 
 Landing page estática (HTML/CSS/JS puro, sem build) da turma 2.0 do curso
-**Migrando para BIM com Revit e Pro-Elétrica**, pronta para o GitHub Pages.
+**Migrando para BIM com Revit, Pro-Elétrica e o plugin Migrando para BIM**, pronta para o GitHub Pages.
 
 ## Estrutura
 
 ```
 index.html          página única (hero, sobre, grade curricular, demonstração, recursos, preço, FAQ)
-css/style.css        estilos (tema escuro, paleta da marca)
-js/content.js        conteúdo editável: módulos do curso, recursos do plugin, vídeos e PDFs
+aula-gratis/        página de captação da aula gratuita (noindex)
+plugin/             página de vendas do plugin Migrando para BIM (40 comandos)
+css/style.css        estilos do site do curso (tema escuro, paleta da marca)
+css/plugin.css      estilos da página do plugin
+js/content.js        conteúdo editável: módulos do curso, recursos dos plugins, vídeos e PDFs
+js/plugin.js        conteúdo e interações da página do plugin
 js/main.js           interações: accordions, tabs, modal de vídeo/PDF, menu mobile
 assets/img/          ícones/logo (SVG) e ilustrações
 CNAME                domínio customizado do GitHub Pages (ver seção abaixo)
@@ -23,6 +27,9 @@ Não há etapa de build — qualquer edição em `index.html`, `css/style.css` o
   aulas foram extraídos do arquivo `Escopo Migrando para BIM 2.0.docx`.
 - **Recursos do plugin Pro-Elétrica** (`PLUGIN_FEATURES`): os 15 recursos do
   site atual.
+- **Plugin Migrando para BIM** (`plugin/`): página própria, ligada ao curso em
+  `index.html` (hero, card "Sobre", seção `#recursos`, preço e FAQ). O
+  treinamento inclui **6 meses de acesso a cada um dos dois plugins**.
 - **PDF de demonstração** (`DEMO_PDFS`): o link do Google Drive já usado no
   site atual.
 - **Botão de compra**: aponta para o checkout atual da Kiwify

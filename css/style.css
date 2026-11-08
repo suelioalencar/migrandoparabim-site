@@ -502,6 +502,23 @@ body {
 .plugin-banner strong { color: var(--yellow); }
 .fine-print { text-align: center; color: var(--text-dim); font-size: .78rem; margin: 22px 0 0; }
 
+/* ---------- segundo plugin incluso ---------- */
+.plugin-teaser {
+  max-width: 760px;
+  margin: 44px auto 0;
+  padding: 30px 32px;
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--yellow);
+  border-radius: var(--radius-sm);
+}
+.plugin-teaser .eyebrow { display: flex; margin-bottom: 6px; }
+.plugin-teaser h3 { font-size: 1.35rem; margin: 0 0 12px; }
+.plugin-teaser p { margin: 0 0 12px; color: var(--text-muted); font-size: .95rem; }
+.plugin-teaser-gift { color: var(--text) !important; }
+.plugin-teaser-gift strong { color: var(--yellow); }
+.plugin-teaser .btn { margin-top: 8px; }
+
 /* ---------- feature grid ---------- */
 .feature-grid { grid-template-columns: repeat(3, 1fr); }
 .feature-card {
