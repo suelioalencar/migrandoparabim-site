@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18458569340"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18458569340');
+</script>
+<!-- Pixel do Meta (PageView + eventos; ver js/pixel.js) -->
+<script src="../js/pixel.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plugin Migrando para BIM — 40 comandos para projeto elétrico no Revit</title>
+<meta name="description" content="Plugin para Revit com 40 comandos de projeto elétrico e documentação: cargas, listas de materiais, TAGs, pranchas, famílias e automação. 7 comandos grátis. Revit 2023 a 2027.">
+<meta property="og:title" content="Plugin Migrando para BIM — 40 comandos para o Revit">
+<meta property="og:description" content="Pare de fazer no braço o que o Revit podia fazer por você. 40 comandos de projeto elétrico e documentação, com 7 grátis para começar.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/plugin.css?v=b4">
+</head>
+<body>
+
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="Migrando para BIM — página inicial">
+      <img src="../assets/img/icon.svg" alt="" class="logo-icon" width="34" height="34">
+      <span class="logo-text"><span class="logo-text-full">Migrando para </span><strong>BIM 2.0</strong></span>
+      <span class="logo-sep">/</span>
+      <span class="logo-badge">Plugin</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Seções">
+      <a href="#dores">Dores</a>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#gratis">Grátis</a>
+      <a href="#mcp">MCP</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary btn-sm js-wa" data-origem="header" href="#gratis">Testar o plugin</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Plugin para Revit · 2023 a 2027</p>
+
+        <h1 class="hero-question">
+          <span class="hero-question-lead">Você ainda</span>
+          <span class="hero-question-pain" id="heroPain">sai dando TAB para conseguir selecionar as famílias aninhadas?</span>
+        </h1>
+
+        <div class="hero-nav">
+          <button type="button" class="hero-arrow" data-hero-prev aria-label="Pergunta anterior">‹</button>
+          <div class="hero-dots" id="heroDots" aria-hidden="true"></div>
+          <button type="button" class="hero-arrow" data-hero-next aria-label="Próxima pergunta">›</button>
+        </div>
+
+        <p class="hero-sub">
+          Quarenta comandos para projeto elétrico e documentação dentro do Revit.
+          Instala em minutos, roda no seu computador e os <strong>sete primeiros são grátis</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg js-wa" data-origem="hero" href="#gratis">Testar o plugin</a>
+          <a class="btn btn-ghost btn-lg" href="#gratis">Ver os 7 comandos grátis</a>
+        </div>
+
+        <ul class="hero-facts">
+          <li><strong>40</strong><span>comandos públicos</span></li>
+          <li><strong>7</strong><span>grátis para sempre</span></li>
+          <li><strong>2023–2027</strong><span>versões do Revit</span></li>
+          <li><strong>1</strong><span>licença por computador</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-media">
+        <div class="shot-stack">
+          <figure class="shot shot--hero" data-shot="02-selecionar-aninhadas-depois">
+            <div class="shot-empty">
+              <span class="shot-empty-label">Print do plugin</span>
+              <span class="shot-empty-scene">Janela de seleção sobre as tomadas duplas, com os módulos aninhados contados.</span>
+            </div>
+            <img class="shot-img" alt="Painel do plugin no Revit" loading="eager" decoding="async">
+          </figure>
+          <p class="shot-caption">Roda dentro do Revit, na aba do plugin. Sem programa separado, sem nuvem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUANTOS VOCÊ AINDA FAZ ============ -->
+  <section class="section section--quiz" id="quiz">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Teste rápido</p>
+        <h2>Quantos você ainda faz?</h2>
+        <p class="lead">Marque o que ainda acontece no seu dia a dia. O contador mostra quantos comandos podem sair da sua rotina — e quais são.</p>
+      </div>
+
+      <div class="quiz-layout">
+        <div class="quiz-list" id="quizList" role="group" aria-label="Tarefas que você ainda faz à mão"></div>
+
+        <aside class="quiz-panel">
+          <div class="quiz-count">
+            <strong id="quizCount">0</strong>
+            <span id="quizWord">dores ainda no seu dia</span>
+          </div>
+          <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+          <a class="btn btn-primary btn-block js-wa" id="quizCta" data-origem="quiz" href="#gratis" hidden>Resolver essas dores</a>
+          <p class="quiz-note" id="quizDetails" hidden>Nada é enviado para servidor. O cálculo é feito no próprio navegador.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AS 8 MAIORES DORES ============ -->
+  <section class="section" id="dores">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">As maiores dores</p>
+        <h2>O que mais consome tempo no projeto elétrico</h2>
+        <p class="lead">Oito tarefas que aparecem em quase todo projeto — e o comando que resolve cada uma. Arraste a imagem para ver o antes e o depois.</p>
+      </div>
+
+      <div class="pains" id="painsList"></div>
+    </div>
+  </section>
+
+  <!-- ============ 12 FERRAMENTAS ============ -->
+  <section class="section section--alt" id="ferramentas">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Alto uso</p>
+        <h2>Mais 12 ferramentas que entram no dia a dia</h2>
+        <p class="lead">Da modelagem de infraestrutura à documentação da prancha. Filtre por área para achar o que dói hoje.</p>
+      </div>
+
+      <div class="tabs" role="group" aria-label="Filtrar por área">
+        <button type="button" class="tab is-on" data-area-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" class="tab" data-area-filter="Elétrica" aria-pressed="false">Elétrica</button>
+        <button type="button" class="tab" data-area-filter="Infraestrutura" aria-pressed="false">Infraestrutura</button>
+        <button type="button" class="tab" data-area-filter="Famílias" aria-pressed="false">Famílias</button>
+        <button type="button" class="tab" data-area-filter="Documentação" aria-pressed="false">Documentação</button>
+      </div>
+
+      <div class="tools-grid" id="toolsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 16 UTILITÁRIOS ============ -->
+  <section class="section" id="utilitarios">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">A caixa de ferramentas</p>
+        <h2>Os outros 16 utilitários</h2>
+        <p class="lead">Comandos pequenos, de uso pontual. Sozinhos não parecem muito; no fim do mês são horas que não voltam.</p>
+      </div>
+
+      <div class="utils-grid" id="utilsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7 GRÁTIS ============ -->
+  <section class="section section--free" id="gratis">
+    <div class="container">
+      <div class="free-layout">
+        <div class="free-copy">
+          <p class="eyebrow">Módulo público</p>
+          <h2>Sete comandos grátis, sem prazo</h2>
+          <p class="lead">São comandos inteiros, não demonstração. Instala, usa no projeto e decide depois se o módulo Tools vale a pena.</p>
+          <div class="free-actions">
+            <a class="btn btn-primary btn-lg js-wa" data-origem="gratis" href="#gratis">Pegar os 7 comandos grátis</a>
+            <a class="btn btn-ghost btn-lg" href="#modulos">Comparar os módulos</a>
+          </div>
+          <p class="free-note">Licença gratuita, uma instalação por computador. Funciona offline.</p>
+        </div>
+
+        <ul class="free-list" id="freeList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MCP ============ -->
+  <section class="section section--mcp" id="mcp">
+    <div class="container mcp-layout">
+      <div class="mcp-copy">
+        <p class="eyebrow">Servidor MCP</p>
+        <h2>E se você pudesse pedir em português?</h2>
+        <p class="lead">O plugin expõe o Revit para assistentes que falam MCP, como o Claude. Você descreve o que quer, o assistente mostra a simulação e só depois de confirmar o Revit executa.</p>
+        <ul class="mcp-list">
+          <li><strong>Simulação primeiro.</strong> O que vai acontecer aparece antes de qualquer alteração no modelo.</li>
+          <li><strong>Um único Ctrl+Z.</strong> A execução entra como uma transação só.</li>
+          <li><strong>Você continua no controle.</strong> Nada roda sem confirmação.</li>
+        </ul>
+        <div class="mcp-example">
+          <p class="mcp-example-label">Exemplo de pedido</p>
+          <p class="mcp-example-text">“Numere as tomadas do pavimento térreo de 1 a 40, seguindo a tabela, e me mostre o resultado antes de aplicar.”</p>
+        </div>
+      </div>
+      <div class="mcp-media" id="mcpShot"></div>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULOS ============ -->
+  <section class="section section--alt" id="modulos">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Licenças</p>
+        <h2>Grátis ou Tools</h2>
+        <p class="lead">O módulo público é gratuito e permanente. O Tools libera os 33 comandos de produção.</p>
+      </div>
+
+      <div class="modules">
+        <article class="module module--free">
+          <p class="module-kicker">Público</p>
+          <h3>Grátis</h3>
+          <p class="module-price">R$ 0</p>
+          <ul class="module-list">
+            <li>7 comandos completos</li>
+            <li>Gerenciador de Folhas e Exportar Pranchas</li>
+            <li>Colorir Eletrodutos e Juntar Cortados</li>
+            <li>Limpar Região Branca, Salvar Famílias e Alinhar Vista</li>
+            <li>Atualizações do módulo público</li>
+          </ul>
+          <a class="btn btn-ghost btn-block js-wa" data-origem="modulo-free" href="#gratis">Baixar grátis</a>
+        </article>
+
+        <article class="module module--tools">
+          <p class="module-kicker">Completo</p>
+          <h3>Tools</h3>
+          <p class="module-price">33 comandos</p>
+          <ul class="module-list">
+            <li>Tudo do módulo público</li>
+            <li>Elétrica: cargas, materiais, TAGs, paletas</li>
+            <li>Infraestrutura: suportes, conexões, eletrocalha</li>
+            <li>Famílias: parâmetros, substituição, salvamento em lote</li>
+            <li>Documentação: folhas, vistas, pranchas, textos</li>
+            <li>Servidor MCP</li>
+          </ul>
+          <a class="btn btn-primary btn-block js-wa" data-origem="modulo-tools" href="#gratis">Falar sobre o Tools</a>
+        </article>
+      </div>
+
+      <p class="modules-note">
+        Este plugin é um produto diferente do <strong>Pro-Elétrica</strong> usado no curso. Os seis meses de Pro-Elétrica
+        que acompanham o treinamento não incluem o módulo Tools.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="eyebrow">Dúvidas</p>
+        <h2>Antes de instalar</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Quais versões do Revit são suportadas?</summary>
+          <p>Revit 2023 a 2027. A instalação escolhe a versão que você tem na máquina.</p>
+        </details>
+        <details>
+          <summary>Como é a instalação?</summary>
+          <p>É um instalador comum do Windows. Ele registra o plugin na pasta de complementos do Revit e, na próxima abertura, a aba aparece na faixa de opções.</p>
+        </details>
+        <details>
+          <summary>Preciso de internet para usar?</summary>
+          <p>Para trabalhar, não. A validação da licença é online, então a primeira ativação e as renovações pedem conexão.</p>
+        </details>
+        <details>
+          <summary>A licença é por computador?</summary>
+          <p>Sim: uma licença ativa por computador. Se você trocar de máquina, é só desativar na antiga e ativar na nova.</p>
+        </details>
+        <details>
+          <summary>Funciona em notebook e em desktop?</summary>
+          <p>Sim, desde que o Revit rode na máquina. O plugin não exige placa de vídeo dedicada.</p>
+        </details>
+        <details>
+          <summary>Qual a diferença para o Pro-Elétrica do curso?</summary>
+          <p>O Pro-Elétrica é o plugin usado nas aulas do treinamento. Este é um produto separado, com foco em automação de projeto elétrico e documentação. Os seis meses de Pro-Elétrica do curso não dão acesso a ele.</p>
+        </details>
+        <details>
+          <summary>Existe teste antes de comprar?</summary>
+          <p>Os 7 comandos do módulo público são gratuitos e sem prazo — é a melhor forma de testar. Se você quiser avaliar o Tools antes, fale comigo no WhatsApp.</p>
+        </details>
+        <details>
+          <summary>As atualizações são pagas?</summary>
+          <p>As correções e melhorias saem dentro da mesma versão. Uma mudança de versão maior é combinada à parte.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="section section--cta">
+    <div class="container cta-box">
+      <p class="eyebrow">Comece pelo grátis</p>
+      <h2>Antes de automatizar o projeto inteiro, resolva uma tarefa hoje</h2>
+      <p class="lead">Instale os 7 comandos gratuitos, use no projeto que está na sua tela e veja quanto tempo volta para o seu dia.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary btn-lg js-wa" data-origem="cta-final" href="#gratis">Pegar os 7 comandos grátis</a>
+        <a class="btn btn-ghost btn-lg" href="https://wa.me/5598991735785" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">
+        <img src="../assets/img/icon.svg" alt="" class="logo-icon" width="32" height="32">
+        <span class="logo-text"><span class="logo-text-full">Migrando para </span><strong>BIM 2.0</strong></span>
+      </a>
+      <p>Plugin de projeto elétrico para Revit. Feito por quem projeta.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Rodapé">
+      <a href="../index.html">Curso</a>
+      <a href="#dores">Dores</a>
+      <a href="#gratis">Comandos grátis</a>
+      <a href="#modulos">Licenças</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+
+    <div class="footer-contact">
+      <a href="https://wa.me/5598991735785" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://instagram.com/eng.suelioalencar" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:contato@migrandoparabim.com.br">contato@migrandoparabim.com.br</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year">2026</span> Migrando para BIM 2.0. Todos os direitos reservados.</p>
+    <p>Revit é marca registrada da Autodesk. Este plugin não é um produto Autodesk.</p>
+  </div>
+</footer>
+
+<script src="../js/plugin.js?v=b4"></script>
+</body>
+</html>
