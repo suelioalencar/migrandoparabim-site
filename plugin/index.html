@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/plugin.css?v=b4">
+<link rel="stylesheet" href="../css/plugin.css?v=b7">
 </head>
 <body>
 
@@ -97,14 +97,14 @@
 
       <div class="hero-media">
         <div class="shot-stack">
-          <figure class="shot shot--hero" data-shot="02-selecionar-aninhadas-depois">
-            <div class="shot-empty">
-              <span class="shot-empty-label">Print do plugin</span>
-              <span class="shot-empty-scene">Janela de seleção sobre as tomadas duplas, com os módulos aninhados contados.</span>
-            </div>
-            <img class="shot-img" alt="Painel do plugin no Revit" loading="eager" decoding="async">
+          <figure class="shot shot--hero">
+            <img class="shot-img" src="../assets/img/plugin/hero.webp"
+                 alt="Gerenciador de Vistas do plugin, aberto dentro do Revit"
+                 data-cap="Gerenciador de Vistas — o plugin aberto dentro do Revit, na própria aba."
+                 tabindex="0" role="button" aria-label="Ampliar o print do plugin no Revit"
+                 loading="eager" decoding="async">
           </figure>
-          <p class="shot-caption">Roda dentro do Revit, na aba do plugin. Sem programa separado, sem nuvem.</p>
+          <p class="shot-caption">O plugin roda dentro do Revit, na própria aba. Sem programa separado, sem nuvem.</p>
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@
       <div class="section-head">
         <p class="eyebrow">As maiores dores</p>
         <h2>O que mais consome tempo no projeto elétrico</h2>
-        <p class="lead">Oito tarefas que aparecem em quase todo projeto — e o comando que resolve cada uma. Arraste a imagem para ver o antes e o depois.</p>
+        <p class="lead">Oito tarefas que aparecem em quase todo projeto — e o comando que resolve cada uma. Arraste a imagem para ver o antes e o depois e clique nela para ampliar.</p>
       </div>
 
       <div class="pains" id="painsList"></div>
@@ -154,7 +154,7 @@
       <div class="section-head">
         <p class="eyebrow">Alto uso</p>
         <h2>Mais 12 ferramentas que entram no dia a dia</h2>
-        <p class="lead">Da modelagem de infraestrutura à documentação da prancha. Filtre por área para achar o que dói hoje.</p>
+        <p class="lead">Da modelagem de infraestrutura à documentação da prancha. Filtre por área para achar o que dói hoje e clique em um print para ampliar.</p>
       </div>
 
       <div class="tabs" role="group" aria-label="Filtrar por área">
@@ -219,7 +219,6 @@
           <p class="mcp-example-text">“Numere as tomadas do pavimento térreo de 1 a 40, seguindo a tabela, e me mostre o resultado antes de aplicar.”</p>
         </div>
       </div>
-      <div class="mcp-media" id="mcpShot"></div>
     </div>
   </section>
 
@@ -361,6 +360,15 @@
   </div>
 </footer>
 
-<script src="../js/plugin.js?v=b4"></script>
+<!-- ============ PRINT AMPLIADO ============ -->
+<dialog class="lightbox" id="lightbox" aria-label="Print ampliado">
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" alt="">
+    <figcaption class="lightbox-caption"></figcaption>
+  </figure>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Fechar print ampliado">&times;</button>
+</dialog>
+
+<script src="../js/plugin.js?v=b7"></script>
 </body>
 </html>

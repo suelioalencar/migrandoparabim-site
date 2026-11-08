@@ -27,6 +27,7 @@
       pain: "Você ainda exporta as listas de materiais do Revit uma a uma, e depois junta tudo?",
       cmd: "Exportar Tabelas",
       why: "Marca várias tabelas, escolhe a aba consolidada e recebe um Excel já formatado como no Revit.",
+      caption: "Tabelas marcadas e a opção de aba consolidada — o Excel sai com a formatação do Revit.",
       scene: "Várias tabelas marcadas na tela, opção de aba consolidada e o Excel resultante."
     },
     {
@@ -34,6 +35,7 @@
       pain: "Ainda sai dando TAB para conseguir selecionar as famílias aninhadas?",
       cmd: "Selecionar Aninhadas",
       why: "Uma janela sobre as tomadas duplas e só os módulos aninhados ficam selecionados, com a contagem.",
+      caption: "A mesma tomada dupla: antes, sem seleção; depois, com os três módulos aninhados selecionados.",
       scene: "Janela passando sobre tomadas duplas e, depois, só os módulos selecionados."
     },
     {
@@ -41,6 +43,7 @@
       pain: "Ainda ajusta as TAGs dos dispositivos uma a uma, manualmente?",
       cmd: "Inserir TAGs",
       why: "Pré-visualização em duas colunas antes de aplicar, inclusive nos símbolos girados.",
+      caption: "A mesma planta sem TAGs e com as TAGs aplicadas, inclusive nos símbolos girados.",
       scene: "Tela em duas colunas com preview: planta sem TAGs e depois com as TAGs."
     },
     {
@@ -48,6 +51,7 @@
       pain: "Ainda procura qual família está com o tipo de carga errado — e por isso com o fator de demanda errado?",
       cmd: "Revisar Cargas e Cargas por Elemento",
       why: "Lista filtrada por tipo de carga, o elemento aninhado com o host ao lado e o destaque na planta.",
+      caption: "As cargas por elemento, com o host ao lado, e o elemento realçado na planta.",
       scene: "Lista filtrada por tipo de carga, elemento com o host ao lado e destaque na planta."
     },
     {
@@ -55,6 +59,7 @@
       pain: "Ainda cadastra os fatores de demanda novos um a um?",
       cmd: "Exportar Cargas e Importar Cargas",
       why: "Leva as cargas para o Excel, você edita em lote e devolve tudo cadastrado no Revit.",
+      caption: "O Excel com os fatores de demanda, pronto para editar em lote.",
       scene: "Planilha no Excel com os fatores novos e a janela nativa do Revit já cadastrada."
     },
     {
@@ -62,6 +67,7 @@
       pain: "Ainda volta ao CAD só para desligar uma camada ou trocar a cor do DWG importado?",
       cmd: "Camadas do CAD",
       why: "Busca a camada, muda cor e espessura e vê o resultado na planta, sem sair do Revit.",
+      caption: "A planta antes e depois de desligar camadas e trocar a cor do DWG.",
       scene: "Lista de camadas com busca, cor e espessura alteradas, e a planta antes e depois."
     },
     {
@@ -69,6 +75,7 @@
       pain: "Ainda soma eletroduto em metros, peça em unidade, e aplica a perda na planilha?",
       cmd: "Lista de Materiais",
       why: "Lista unificada com miniaturas, filtros e perda por categoria; sai pronta para o Excel.",
+      caption: "Lista unificada com miniaturas, filtros e perda por categoria.",
       scene: "Lista unificada com miniaturas, filtros e perda por categoria, e o Excel exportado."
     },
     {
@@ -76,6 +83,7 @@
       pain: "Ainda refaz circuito e redigita parâmetro quando precisa trocar uma família?",
       cmd: "Substituir Família",
       why: "Troca a família mantendo circuito, carga, valores e posição do elemento.",
+      caption: "Escolha da família de destino — circuito e valores continuam no elemento.",
       scene: "Escolha da família de destino e o mesmo elemento depois da troca."
     },
 
@@ -298,6 +306,48 @@
   /* Perguntas da seção "Quantos você ainda faz?". */
   var QUIZ_N = 12;
 
+  /* Quais itens já têm print em assets/img/plugin/ (arquivos .webp).
+     Sem print, o item é renderizado só com o texto — nunca uma caixa vazia.
+     Ao capturar uma imagem nova, basta acrescentar o id aqui. */
+  var HAS_SHOT = {
+    "exportar-tabelas": 1,
+    "selecionar-aninhadas": 1,
+    "inserir-tags": 1,
+    "revisar-cargas": 1,
+    "exportar-importar-cargas": 1,
+    "camadas-do-cad": 1,
+    "lista-de-materiais": 1,
+    "substituir-familia": 1,
+    "distribuir-suportes": 1,
+    "conectar-caixas": 1,
+    "gerenciador-de-folhas": 1,
+    "exportar-pranchas": 1,
+    "gerenciador-de-vistas": 1,
+    "gerenciar-parametros": 1,
+    "parametros-do-projeto": 1,
+    "igualar-familias": 1,
+    "parametros-aninhados": 1,
+    "paletas": 1,
+    "selecionar-somente": 1,
+    "atualizador-de-templates": 1,
+    "gerenciador-de-familias": 1,
+    "colorir-eletrodutos": 1,
+    "juntar-cortados": 1,
+    "conexoes-de-conduite": 1,
+    "conexoes-de-eletrocalha": 1,
+    "limpar-regiao-branca": 1,
+    "numerar-pela-tabela": 1,
+    "ajustar-texto-viewport": 1,
+    "concordancia": 1
+  };
+
+  /* Itens que têm o par antes/depois (comparador arrastável). */
+  var HAS_PAIR = {
+    "selecionar-aninhadas": 1,
+    "inserir-tags": 1,
+    "camadas-do-cad": 1
+  };
+
   var AREAS = ["Elétrica", "Infraestrutura", "Famílias", "Documentação"];
 
   /* =====================================================================
@@ -326,105 +376,67 @@
   }
 
   /* =====================================================================
-     3. Componente de imagem: mostra o print se existir
+     3. Componentes de imagem (só renderizam quando o print existe)
      ===================================================================== */
+  function shotSrc(item, suffix) {
+    return SHOTS + shotId(item) + "-" + (suffix || "depois") + ".webp";
+  }
+
+  /* Print único: cards, hero e dores que têm só o "depois". */
   function shotFigure(item, opts) {
+    if (!HAS_SHOT[item.id]) return "";
     opts = opts || {};
-    var file = shotId(item) + "-depois";
     var cls = opts.className ? " " + opts.className : "";
+    var alt = opts.alt || ("Print do comando " + item.cmd + " no Revit");
+    var cap = opts.caption || (item.cmd + " — " + item.why);
     return '' +
-      '<figure class="shot' + cls + '" data-shot="' + esc(file) + '">' +
-        '<div class="shot-empty">' +
-          '<span class="shot-empty-label">Print pendente</span>' +
-          '<span class="shot-empty-scene">' + esc(item.scene) + '</span>' +
-        '</div>' +
-        '<img class="shot-img" alt="' + esc(opts.alt || ("Print do comando " + item.cmd + " no Revit")) + '" loading="lazy" decoding="async">' +
+      '<figure class="shot' + cls + '">' +
+        '<img class="shot-img" src="' + esc(shotSrc(item)) + '"' +
+          ' alt="' + esc(alt) + '"' +
+          ' data-cap="' + esc(cap) + '"' +
+          ' tabindex="0" role="button" aria-label="Ampliar: ' + esc(alt) + '"' +
+          ' loading="lazy" decoding="async">' +
       '</figure>';
   }
 
-  function initShots(root) {
-    $$(".shot", root).forEach(function (fig) {
-      if (fig.dataset.ready) return;
-      fig.dataset.ready = "1";
-      var img = $(".shot-img", fig);
-      if (!img) return;
-      loadInto(img, SHOTS + fig.dataset.shot, function (ok) {
-        if (ok) fig.classList.add("is-loaded");
-        else img.removeAttribute("src");
-      });
-    });
-  }
-
-  /* Tenta .webp e, se não existir, .png — carregando direto no <img> final. */
-  function loadInto(img, base, done) {
-    var exts = [".webp", ".png"];
-    var i = 0;
-    var settled = false;
-    img.addEventListener("load", function () {
-      if (settled || !img.naturalWidth) return;
-      settled = true;
-      done(true);
-    });
-    img.addEventListener("error", function () {
-      if (settled) return;
-      i++;
-      if (i < exts.length) img.src = base + exts[i];
-      else { settled = true; done(false); }
-    });
-    img.src = base + exts[0];
-  }
-
-  /* Comparador antes/depois (arrastar para revelar). */
+  /* Comparador antes/depois (arrastar para revelar) ou print único. */
   function compareBlock(item) {
+    if (!HAS_SHOT[item.id]) return "";
+
+    if (!HAS_PAIR[item.id]) {
+      return shotFigure(item, { caption: item.caption || ("Depois do comando " + item.cmd) });
+    }
+
+    var after = shotSrc(item);
+    var afterAlt = "Depois do comando " + item.cmd;
     return '' +
-      '<div class="compare is-empty" data-compare="' + esc(shotId(item)) + '">' +
-        '<div class="compare-empty">' +
-          '<span class="shot-empty-label">Antes e depois pendentes</span>' +
-          '<span class="shot-empty-scene">' + esc(item.scene) + '</span>' +
-        '</div>' +
-        '<img class="compare-img compare-img--before" alt="Antes do comando ' + esc(item.cmd) + '">' +
+      '<div class="compare" data-compare="' + esc(shotId(item)) + '" style="--clip:58%">' +
+        '<img class="compare-img compare-img--before" src="' + esc(shotSrc(item, "antes")) + '"' +
+          ' alt="Antes do comando ' + esc(item.cmd) + '" decoding="async">' +
         '<div class="compare-clip">' +
-          '<img class="compare-img compare-img--after" alt="Depois do comando ' + esc(item.cmd) + '">' +
+          '<img class="compare-img compare-img--after" src="' + esc(after) + '"' +
+            ' alt="' + esc(afterAlt) + '" decoding="async">' +
         '</div>' +
         '<span class="compare-tag compare-tag--before">Antes</span>' +
         '<span class="compare-tag compare-tag--after">Depois</span>' +
-        '<input class="compare-range" type="range" min="0" max="100" value="58" step="1" aria-label="Comparar antes e depois" disabled>' +
+        '<button type="button" class="zoom-btn" data-zoom="' + esc(after) + '"' +
+          ' data-zoom-alt="' + esc(afterAlt) + '"' +
+          ' data-cap="' + esc(item.caption || ("Depois do comando " + item.cmd)) + '"' +
+          ' aria-label="Ampliar o print">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M4 9V4h5M20 15v5h-5M15 4h5v5M9 20H4v-5"/>' +
+          '</svg>' +
+        '</button>' +
+        '<input class="compare-range" type="range" min="0" max="100" value="58" step="1" aria-label="Comparar antes e depois">' +
       '</div>';
   }
 
   function initCompares(root) {
     $$(".compare", root).forEach(function (box) {
-      if (box.dataset.ready) return;
-      box.dataset.ready = "1";
-      var id = box.dataset.compare;
-      var before = $(".compare-img--before", box);
-      var after = $(".compare-img--after", box);
       var range = $(".compare-range", box);
-
       function setClip(v) { box.style.setProperty("--clip", v + "%"); }
       setClip(range.value);
-
       range.addEventListener("input", function () { setClip(range.value); });
-
-      var baseB = SHOTS + id + "-antes";
-      var baseA = SHOTS + id + "-depois";
-      var pending = 2, allOk = true;
-
-      function done(ok) {
-        if (!ok) allOk = false;
-        pending--;
-        if (pending > 0) return;
-        if (allOk) {
-          box.classList.remove("is-empty");
-          range.disabled = false;
-        } else {
-          before.removeAttribute("src");
-          after.removeAttribute("src");
-        }
-      }
-
-      loadInto(before, baseB, done);
-      loadInto(after, baseA, done);
     });
   }
 
@@ -539,9 +551,11 @@
     if (!host) return;
     var items = PLUGIN_ITEMS.filter(function (it) { return it.level === 1; });
 
-    host.innerHTML = items.map(function (it, k) {
+    host.innerHTML = items.map(function (it) {
+      var media = compareBlock(it);
+      if (media && it.caption) media += '<p class="shot-caption">' + esc(it.caption) + '</p>';
       return '' +
-        '<article class="pain-block" id="item-' + esc(it.id) + '">' +
+        '<article class="pain-block' + (media ? "" : " pain-block--text") + '" id="item-' + esc(it.id) + '">' +
           '<div class="pain-copy">' +
             '<p class="pain-index"><span>' + String(it.n).padStart(2, "0") + '</span> · ' + esc(it.area) + '</p>' +
             '<h3 class="pain-q">' + esc(it.pain) + '</h3>' +
@@ -551,7 +565,7 @@
               modTag(it.mod) +
             '</div>' +
           '</div>' +
-          '<div class="pain-media">' + compareBlock(it) + '</div>' +
+          (media ? '<div class="pain-media">' + media + '</div>' : '') +
         '</article>';
     }).join("");
 
@@ -567,9 +581,10 @@
     var items = PLUGIN_ITEMS.filter(function (it) { return it.level === 2; });
 
     host.innerHTML = items.map(function (it) {
+      var media = shotFigure(it);
       return '' +
         '<article class="tool-card" id="item-' + esc(it.id) + '" data-area="' + esc(it.area) + '">' +
-          '<div class="tool-media">' + shotFigure(it) + '</div>' +
+          (media ? '<div class="tool-media">' + media + '</div>' : '') +
           '<div class="tool-body">' +
             '<p class="tool-kicker">' + esc(it.area) + '</p>' +
             '<h3 class="tool-q">' + esc(it.pain) + '</h3>' +
@@ -578,8 +593,6 @@
           '</div>' +
         '</article>';
     }).join("");
-
-    initShots(host);
 
     var tabs = $$("[data-area-filter]");
     tabs.forEach(function (btn) {
@@ -601,12 +614,16 @@
     var items = PLUGIN_ITEMS.filter(function (it) { return it.level === 3; });
 
     host.innerHTML = items.map(function (it) {
+      var media = shotFigure(it);
       return '' +
         '<article class="util-card" id="item-' + esc(it.id) + '">' +
-          '<p class="util-n">' + String(it.n).padStart(2, "0") + '</p>' +
-          '<h3 class="util-q">' + esc(it.pain) + '</h3>' +
-          '<p class="util-cmd">' + esc(it.cmd) + '</p>' +
-          '<p class="util-tag">' + modTag(it.mod) + '</p>' +
+          (media ? '<div class="util-media">' + media + '</div>' : '') +
+          '<div class="util-body">' +
+            '<p class="util-n">' + String(it.n).padStart(2, "0") + '</p>' +
+            '<h3 class="util-q">' + esc(it.pain) + '</h3>' +
+            '<p class="util-cmd">' + esc(it.cmd) + '</p>' +
+            '<p class="util-tag">' + modTag(it.mod) + '</p>' +
+          '</div>' +
         '</article>';
     }).join("");
   }
@@ -631,19 +648,7 @@
   }
 
   /* =====================================================================
-     9. MCP
-     ===================================================================== */
-  function renderMcp() {
-    var host = $("#mcpShot");
-    var item = byId("servidor-mcp");
-    if (host && item) {
-      host.innerHTML = shotFigure(item, { className: "shot--tall" });
-      initShots(host);
-    }
-  }
-
-  /* =====================================================================
-     10. Links e tracking
+     9. Links e tracking
      ===================================================================== */
   function initLinks() {
     $$(".js-wa").forEach(function (a) {
@@ -656,6 +661,62 @@
         track("PluginTest", { origem: a.dataset.origem || "sem-origem" });
       });
     });
+  }
+
+  /* =====================================================================
+     10. Print ampliado (clique na imagem abre o pop-up)
+     ===================================================================== */
+  function initLightbox() {
+    var box = $("#lightbox");
+    if (!box || typeof box.showModal !== "function") return;
+
+    var img = $(".lightbox-img", box);
+    var caption = $(".lightbox-caption", box);
+
+    function open(src, text) {
+      img.src = src;
+      img.alt = text || "";
+      if (caption) caption.textContent = text || "";
+      box.showModal();
+      box.classList.add("is-open");
+    }
+    function close() {
+      if (box.open) box.close();
+      box.classList.remove("is-open");
+    }
+
+    /* Clique em qualquer print (imagem) ou no botão Ampliar dos comparadores. */
+    document.addEventListener("click", function (e) {
+      var zoom = e.target.closest ? e.target.closest("[data-zoom]") : null;
+      if (zoom) {
+        open(zoom.dataset.zoom, zoom.dataset.cap || zoom.dataset.zoomAlt || "");
+        track("PluginZoom", { origem: "comparador" });
+        return;
+      }
+      var pic = e.target.closest ? e.target.closest("img.shot-img") : null;
+      if (pic && !e.target.closest(".lightbox")) {
+        open(pic.src, pic.dataset.cap || pic.alt);
+        track("PluginZoom", { origem: "print" });
+      }
+    });
+
+    /* Enter/Espaço nos prints focáveis. */
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      var pic = e.target.closest ? e.target.closest("img.shot-img") : null;
+      if (!pic) return;
+      e.preventDefault();
+      open(pic.src, pic.dataset.cap || pic.alt);
+    });
+
+    $$("[data-lightbox-close]", box).forEach(function (b) {
+      b.addEventListener("click", close);
+    });
+    /* Clique fora da figura (no fundo do dialog) fecha. */
+    box.addEventListener("click", function (e) {
+      if (e.target === box || (e.target.classList && e.target.classList.contains("lightbox-figure"))) close();
+    });
+    box.addEventListener("close", function () { box.classList.remove("is-open"); });
   }
 
   /* =====================================================================
@@ -686,9 +747,8 @@
     renderTools();
     renderUtils();
     renderFree();
-    renderMcp();
     initLinks();
-    initShots(document);
+    initLightbox();
 
     var y = $("#year");
     if (y) y.textContent = new Date().getFullYear();

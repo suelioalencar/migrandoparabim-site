@@ -1,37 +1,47 @@
 # Imagens da página /plugin/
 
-Enquanto os arquivos não existem, a página mostra um aviso com a cena que falta
-capturar. Basta salvar o arquivo com o nome certo que a imagem aparece sozinha —
-não precisa editar HTML nem JS.
+Prints reais convertidos para WebP (largura máx. 1600 px, qualidade 80), com a
+barra de tarefas do Windows cortada nas capturas de 2560 px.
 
 ## Nomes
 
 | Situação | Arquivo |
 |---|---|
-| Print único (cards, herói, MCP) | `<id>-depois.webp` |
-| Antes/depois (as 8 maiores dores) | `<id>-antes.webp` e `<id>-depois.webp` |
+| Print único (cards, herói, dores sem "antes") | `<nn>-<id>-depois.webp` |
+| Antes/depois (comparador arrastável) | `<nn>-<id>-antes.webp` e `<nn>-<id>-depois.webp` |
 
-Extensões aceitas, nesta ordem: `.webp`, `.png`, `.jpg`. Prefira WebP (qualidade 82,
-largura 1600 px) para a primeira dobra pesar pouco no 4G.
+`<nn>` é o número do item com dois dígitos. A lista de ids está em
+`js/plugin.js` (campo `id` de `PLUGIN_ITEMS`).
 
-## Ids usados na página
+## Como a página decide o que mostrar
 
-01 `exportar-tabelas` · 02 `selecionar-aninhadas` · 03 `inserir-tags` ·
-04 `revisar-cargas` · 05 `exportar-importar-cargas` · 06 `camadas-do-cad` ·
-07 `lista-de-materiais` · 08 `substituir-familia` · 09 `distribuir-suportes` ·
-10 `conectar-caixas` · 11 `gerenciador-de-folhas` · 12 `exportar-pranchas` ·
-13 `gerenciador-de-vistas` · 14 `gerenciar-parametros` · 15 `parametros-do-projeto` ·
-16 `igualar-familias` · 17 `parametros-aninhados` · 18 `paletas` ·
-19 `selecionar-somente` · 20 `mover-e-conectar` · 21 `atualizador-de-templates` ·
-22 `gerenciador-de-familias` · 23 `ligar-saidas-usadas` · 24 `colorir-eletrodutos` ·
-25 `juntar-cortados` · 26 `conexoes-de-conduite` · 27 `conexoes-de-eletrocalha` ·
-28 `limpar-regiao-branca` · 29 `numerar-pela-tabela` · 30 `nomear-familias` ·
-31 `salvar-familias` · 32 `alinhar-vista` · 33 `ajustar-texto-viewport` ·
-34 `alinhar-textos` · 35 `concordancia` · 36 `desconectar` · 37 `servidor-mcp`
+Não há sondagem de arquivos: `js/plugin.js` tem dois mapas no topo —
+
+- `HAS_SHOT` — ids que já têm print. Sem entrada, o item é renderizado só com
+  texto (nunca uma caixa vazia).
+- `HAS_PAIR` — ids que têm o par antes/depois e usam o comparador.
+
+Para publicar uma captura nova, salve o arquivo com o nome certo e acrescente o
+id em `HAS_SHOT` (e em `HAS_PAIR`, se houver "antes"). Depois suba a versão do
+`?v=` no `plugin/index.html` para furar o cache.
+
+## Prints já incluídos
+
+01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+21, 22, 24, 25, 26, 27, 28, 29, 33, 35 — e `hero.webp` (Gerenciador de Vistas).
+
+Pares antes/depois: 02 `selecionar-aninhadas`, 03 `inserir-tags`,
+06 `camadas-do-cad`.
+
+## Pendentes de captura
+
+20 `mover-e-conectar` · 23 `ligar-saidas-usadas` · 30 `nomear-familias` ·
+31 `salvar-familias` · 32 `alinhar-vista` · 34 `alinhar-textos` ·
+36 `desconectar` · 37 `servidor-mcp`.
 
 ## Antes de publicar
 
 - Nenhum dado de cliente, nome de projeto privado ou conta pode aparecer.
 - Print em 1920×1080, janela do Revit maximizada, aba MB Dev desligada.
-- A cena que cada imagem precisa mostrar está descrita na própria página
-  (campo `scene` em `js/plugin.js`) e em `Site-Capturas/LEIA-ME-capturas.md`.
+- A cena que cada imagem precisa mostrar está em `scene`, no `js/plugin.js`, e
+  em `Site-Capturas/LEIA-ME-capturas.md`.
