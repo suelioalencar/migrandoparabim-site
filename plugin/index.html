@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/plugin.css?v=b7">
+<link rel="stylesheet" href="../css/plugin.css?v=b12">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
     </a>
 
     <nav class="nav" id="nav" aria-label="Seções">
-      <a href="#dores">Dores</a>
+      <a href="#problemas">Problemas</a>
       <a href="#ferramentas">Ferramentas</a>
       <a href="#gratis">Grátis</a>
       <a href="#mcp">MCP</a>
@@ -88,7 +88,7 @@
         </div>
 
         <ul class="hero-facts">
-          <li><strong>40</strong><span>comandos públicos</span></li>
+          <li><strong>40</strong><span>comandos no total</span></li>
           <li><strong>7</strong><span>grátis para sempre</span></li>
           <li><strong>2023–2027</strong><span>versões do Revit</span></li>
           <li><strong>1</strong><span>licença por computador</span></li>
@@ -97,14 +97,17 @@
 
       <div class="hero-media">
         <div class="shot-stack">
-          <figure class="shot shot--hero">
-            <img class="shot-img" src="../assets/img/plugin/hero.webp"
-                 alt="Gerenciador de Vistas do plugin, aberto dentro do Revit"
-                 data-cap="Gerenciador de Vistas — o plugin aberto dentro do Revit, na própria aba."
+          <figure class="shot shot--hero" id="heroShotBox">
+            <img class="shot-img hero-shot is-on" id="heroShotA" src="../assets/img/plugin/01-exportar-tabelas-depois.webp"
+                 alt="Print do comando Exportar Tabelas no Revit"
+                 data-cap="Tabelas marcadas e a opção de aba consolidada — o Excel sai com a formatação do Revit."
                  tabindex="0" role="button" aria-label="Ampliar o print do plugin no Revit"
                  loading="eager" decoding="async">
+            <img class="shot-img hero-shot" id="heroShotB" alt=""
+                 tabindex="0" role="button" aria-label="Ampliar o print do plugin no Revit"
+                 decoding="async">
           </figure>
-          <p class="shot-caption">O plugin roda dentro do Revit, na própria aba. Sem programa separado, sem nuvem.</p>
+          <p class="shot-caption" id="heroCaption">Tabelas marcadas e a opção de aba consolidada — o Excel sai com a formatação do Revit.</p>
         </div>
       </div>
     </div>
@@ -125,10 +128,10 @@
         <aside class="quiz-panel">
           <div class="quiz-count">
             <strong id="quizCount">0</strong>
-            <span id="quizWord">dores ainda no seu dia</span>
+            <span id="quizWord">problemas ainda no seu dia</span>
           </div>
           <div class="quiz-result" id="quizResult" aria-live="polite"></div>
-          <a class="btn btn-primary btn-block js-wa" id="quizCta" data-origem="quiz" href="#gratis" hidden>Resolver essas dores</a>
+          <a class="btn btn-primary btn-block js-wa" id="quizCta" data-origem="quiz" href="#gratis" hidden>Resolver esses problemas</a>
           <p class="quiz-note" id="quizDetails" hidden>Nada é enviado para servidor. O cálculo é feito no próprio navegador.</p>
         </aside>
       </div>
@@ -136,10 +139,10 @@
   </section>
 
   <!-- ============ AS 8 MAIORES DORES ============ -->
-  <section class="section" id="dores">
+  <section class="section" id="problemas">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">As maiores dores</p>
+        <p class="eyebrow">Os maiores problemas</p>
         <h2>O que mais consome tempo no projeto elétrico</h2>
         <p class="lead">Oito tarefas que aparecem em quase todo projeto — e o comando que resolve cada uma. Arraste a imagem para ver o antes e o depois e clique nela para ampliar.</p>
       </div>
@@ -187,7 +190,7 @@
     <div class="container">
       <div class="free-layout">
         <div class="free-copy">
-          <p class="eyebrow">Módulo público</p>
+          <p class="eyebrow">Módulo grátis</p>
           <h2>Sete comandos grátis, sem prazo</h2>
           <p class="lead">São comandos inteiros, não demonstração. Instala, usa no projeto e decide depois se o módulo Tools vale a pena.</p>
           <div class="free-actions">
@@ -228,12 +231,12 @@
       <div class="section-head">
         <p class="eyebrow">Licenças</p>
         <h2>Grátis ou Tools</h2>
-        <p class="lead">O módulo público é gratuito e permanente. O Tools libera os 33 comandos de produção.</p>
+        <p class="lead">O módulo grátis é permanente. O Tools libera os 33 comandos pagos.</p>
       </div>
 
       <div class="modules">
         <article class="module module--free">
-          <p class="module-kicker">Público</p>
+          <p class="module-kicker">Gratuito</p>
           <h3>Grátis</h3>
           <p class="module-price">R$ 0</p>
           <ul class="module-list">
@@ -241,7 +244,7 @@
             <li>Gerenciador de Folhas e Exportar Pranchas</li>
             <li>Colorir Eletrodutos e Juntar Cortados</li>
             <li>Limpar Região Branca, Salvar Famílias e Alinhar Vista</li>
-            <li>Atualizações do módulo público</li>
+            <li>Atualizações do módulo grátis</li>
           </ul>
           <a class="btn btn-ghost btn-block js-wa" data-origem="modulo-free" href="#gratis">Baixar grátis</a>
         </article>
@@ -251,7 +254,7 @@
           <h3>Tools</h3>
           <p class="module-price">33 comandos</p>
           <ul class="module-list">
-            <li>Tudo do módulo público</li>
+            <li>Tudo do módulo grátis</li>
             <li>Elétrica: cargas, materiais, TAGs, paletas</li>
             <li>Infraestrutura: suportes, conexões, eletrocalha</li>
             <li>Famílias: parâmetros, substituição, salvamento em lote</li>
@@ -304,7 +307,7 @@
         </details>
         <details>
           <summary>Existe teste antes de comprar?</summary>
-          <p>Os 7 comandos do módulo público são gratuitos e sem prazo — é a melhor forma de testar. Se você quiser avaliar o Tools antes, fale comigo no WhatsApp.</p>
+          <p>Os 7 comandos do módulo grátis são gratuitos e sem prazo — é a melhor forma de testar. Se você quiser avaliar o Tools antes, fale comigo no WhatsApp.</p>
         </details>
         <details>
           <summary>As atualizações são pagas?</summary>
@@ -342,7 +345,7 @@
 
     <nav class="footer-nav" aria-label="Rodapé">
       <a href="../index.html">Curso</a>
-      <a href="#dores">Dores</a>
+      <a href="#problemas">Problemas</a>
       <a href="#gratis">Comandos grátis</a>
       <a href="#modulos">Licenças</a>
       <a href="#faq">Dúvidas</a>
@@ -369,6 +372,6 @@
   <button type="button" class="lightbox-close" data-lightbox-close aria-label="Fechar print ampliado">&times;</button>
 </dialog>
 
-<script src="../js/plugin.js?v=b7"></script>
+<script src="../js/plugin.js?v=b12"></script>
 </body>
 </html>

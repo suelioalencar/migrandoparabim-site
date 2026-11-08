@@ -28,7 +28,9 @@ id em `HAS_SHOT` (e em `HAS_PAIR`, se houver "antes"). Depois suba a versão do
 ## Prints já incluídos
 
 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-21, 22, 24, 25, 26, 27, 28, 29, 33, 35 — e `hero.webp` (Gerenciador de Vistas).
+21, 22, 24, 25, 26, 27, 28, 29, 33, 35. O herói usa os prints das seis
+perguntas (`01`, `02`, `03`, `04`, `06`, `07`); `hero.webp` (Gerenciador de
+Vistas) ficou de reserva e hoje não é usado.
 
 Pares antes/depois: 02 `selecionar-aninhadas`, 03 `inserir-tags`,
 06 `camadas-do-cad`.

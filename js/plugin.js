@@ -2,7 +2,7 @@
  * plugin.js — página /plugin/ (site do plugin da Migrando para BIM)
  * ------------------------------------------------------------------
  * Uma lista única de recursos (PLUGIN_ITEMS) alimenta todas as seções:
- * hero rotativo, "Quantos você ainda faz?", as 8 maiores dores, as 12
+ * hero rotativo, "Quantos você ainda faz?", os 8 maiores problemas, as 12
  * ferramentas, os 16 utilitários e os 7 comandos grátis.
  *
  * Imagens: cada item aponta para assets/img/plugin/<shot>-depois.webp
@@ -21,7 +21,7 @@
      1. CONTEÚDO — a lista única
      ===================================================================== */
   var PLUGIN_ITEMS = [
-    /* ---------- Nível 1: as 8 maiores dores (antes/depois) ---------- */
+    /* ---------- Nível 1: os 8 maiores problemas (antes/depois) ---------- */
     {
       n: 1, id: "exportar-tabelas", level: 1, area: "Documentação", mod: "tools",
       pain: "Você ainda exporta as listas de materiais do Revit uma a uma, e depois junta tudo?",
@@ -297,7 +297,7 @@
     }
   ];
 
-  /* Perguntas que giram na primeira dobra (as seis maiores dores). */
+  /* Perguntas que giram na primeira dobra (os seis maiores problemas). */
   var HERO_IDS = [
     "exportar-tabelas", "selecionar-aninhadas", "inserir-tags",
     "revisar-cargas", "camadas-do-cad", "lista-de-materiais"
@@ -382,7 +382,7 @@
     return SHOTS + shotId(item) + "-" + (suffix || "depois") + ".webp";
   }
 
-  /* Print único: cards, hero e dores que têm só o "depois". */
+  /* Print único: cards, hero e problemas que têm só o "depois". */
   function shotFigure(item, opts) {
     if (!HAS_SHOT[item.id]) return "";
     opts = opts || {};
@@ -470,11 +470,65 @@
       var item = list[i];
       el.textContent = heroPhrase(item.pain);
       if (dots) $$(".hero-dot", dots).forEach(function (b, j) { b.classList.toggle("is-on", j === i); });
+      setShot(item);
     }
+
+    /* O print do hero acompanha a pergunta: duas camadas com crossfade. */
+    var layers = [$("#heroShotA"), $("#heroShotB")];
+    var box = $(".shot--hero");
+    var cap = $("#heroCaption");
+    var front = 0;
+    var req = 0;
+
+    function heroCaptionOf(item) {
+      return item.caption || (item.cmd + " — " + item.why);
+    }
+
+    /* A moldura assume a proporção do print — nada de faixa branca em volta.
+       O limite evita molduras finas demais ou altas demais. */
+    function applyAr(img) {
+      if (!box || !img.naturalWidth || !img.naturalHeight) return;
+      var ar = img.naturalWidth / img.naturalHeight;
+      ar = Math.min(2.6, Math.max(1.05, ar));
+      box.style.setProperty("--hero-ar", ar.toFixed(3));
+    }
+
+    function setShot(item) {
+      var a = layers[front], b = layers[1 - front];
+      if (!a || !b) return;
+      var src = shotSrc(item);
+      if (a.getAttribute("src") === src) { applyAr(a); return; }
+
+      var text = heroCaptionOf(item);
+      var my = ++req;
+      b.src = src;
+      b.alt = "Print do comando " + item.cmd + " no Revit";
+      b.dataset.cap = text;
+
+      function swap() {
+        /* cliques rápidos: só o pedido mais recente troca as camadas */
+        if (my !== req) return;
+        applyAr(b);
+        b.classList.add("is-on");
+        a.classList.remove("is-on");
+        front = 1 - front;
+        if (cap) cap.textContent = text;
+      }
+
+      if (b.complete && b.naturalWidth) swap();
+      else b.addEventListener("load", swap, { once: true });
+    }
+
+    /* moldura já nasce com a proporção do primeiro print */
+    if (layers[0] && layers[0].complete) applyAr(layers[0]);
+    else if (layers[0]) layers[0].addEventListener("load", function () { applyAr(layers[0]); }, { once: true });
+
 
     if (list.length > 1) {
       show(0);
       setInterval(function () { show((i + 1) % list.length); }, 6500);
+      /* pré-carrega os prints das outras perguntas: a troca fica instantânea */
+      list.forEach(function (item) { var im = new Image(); im.src = shotSrc(item); });
     }
 
     var prev = $("[data-hero-prev]");
@@ -511,7 +565,7 @@
       var n = on.length;
       countEl.textContent = n;
       countEl.parentNode.classList.toggle("is-hot", n > 0);
-      wordEl.textContent = n === 1 ? "dor ainda no seu dia" : "dores ainda no seu dia";
+      wordEl.textContent = n === 1 ? "problema ainda no seu dia" : "problemas ainda no seu dia";
 
       if (!n) {
         resEl.innerHTML = '<p class="muted">Marque o que ainda acontece na sua rotina. Nada é enviado: o cálculo acontece aqui, no navegador.</p>';
@@ -544,7 +598,7 @@
   }
 
   /* =====================================================================
-     6. As 8 maiores dores
+     6. Os 8 maiores problemas
      ===================================================================== */
   function renderPains() {
     var host = $("#painsList");

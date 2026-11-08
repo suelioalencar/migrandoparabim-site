@@ -130,8 +130,9 @@ button { font-family: inherit; cursor: pointer; }
 .hero-grid {
   position: relative;
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-  gap: 56px; align-items: center;
+  gap: 56px; align-items: start;
 }
+.hero-media { position: relative; }
 .hero-question { margin: 0 0 22px; font-size: clamp(30px, 4.2vw, 52px); font-weight: 800; letter-spacing: -.02em; }
 .hero-question-lead { display: block; color: var(--text-muted); font-size: .52em; font-weight: 600; letter-spacing: 0; margin-bottom: .5em; }
 .hero-question-pain { color: var(--yellow); }
@@ -158,12 +159,29 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0; border-radius: 14px; overflow: hidden;
   border: 1px solid var(--border); background: #fff;
 }
-.shot--hero { box-shadow: var(--shadow); }
+/* a moldura acompanha a proporção do print da vez (--hero-ar vem do JS):
+   o print encosta nas bordas, sem faixa branca sobrando */
+.shot--hero {
+  position: relative; aspect-ratio: var(--hero-ar, 16 / 10);
+  box-shadow: var(--shadow); background: #fff;
+  transition: aspect-ratio .4s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shot--hero { transition: none; }
+  .shot--hero .hero-shot { transition: none; }
+}
 .shot-img {
   display: block; width: 100%; height: auto; cursor: zoom-in;
   transition: filter .15s ease;
 }
 .shot-img:hover, .shot-img:focus-visible { filter: brightness(1.06); }
+/* hero: duas camadas sobrepostas, a foto troca junto com a pergunta */
+.shot--hero .hero-shot {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: center center;
+  opacity: 0; pointer-events: none; transition: opacity .45s ease;
+}
+.shot--hero .hero-shot.is-on { opacity: 1; pointer-events: auto; }
 .shot-stack { position: relative; }
 .shot-caption { margin: 11px 2px 0; font-size: 12.5px; line-height: 1.45; color: var(--text-dim); }
 
