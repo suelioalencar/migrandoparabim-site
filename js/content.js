@@ -187,21 +187,21 @@ const COURSE_STATS = {
 // Recursos automáticos do plugin Pro-Elétrica
 // ---------------------------------------------------------------------
 const PLUGIN_FEATURES = [
-  { icon: "🧮", text: "Dimensionamento de fiação com cálculo automático dos fatores de agrupamento, conforme todos os métodos de instalação da NBR-5410" },
-  { icon: "🧱", text: "Dimensionamento da tubulação, com indicações" },
-  { icon: "🔀", text: "Lançamento automático de eletrodutos, com desvios automáticos" },
-  { icon: "🏷️", text: "Lançamento automático das TAGs de fiação" },
-  { icon: "💡", text: "Lançamento de pontos de iluminação automaticamente, por spaces ou áreas (regulares ou irregulares)" },
-  { icon: "📄", text: "Relatório completo de dimensionamento da fiação em TXT, para o memorial ou conferência dos parâmetros" },
-  { icon: "⚡", text: "Cálculo automático de queda de tensão nos circuitos" },
-  { icon: "🔌", text: "Criação e atribuição de circuitos automaticamente" },
-  { icon: "📐", text: "Geração automática de diagramas unifilares e multifilares" },
-  { icon: "🗂️", text: "Geração automática de legenda de pontos" },
-  { icon: "🔖", text: "Inserção automática de TAGs em tomadas, interruptores e luminárias" },
-  { icon: "✏️", text: "Ajuste das linhas de chamada e inserção de legenda de fiação" },
-  { icon: "🧭", text: "Ajustes do caminho da fiação" },
-  { icon: "⚖️", text: "Balanceamento de fases dos quadros" },
-  { icon: "🧩", text: "Template completo — o mesmo utilizado no curso" },
+  { icon: "calc", text: "Dimensionamento de fiação com cálculo automático dos fatores de agrupamento, conforme todos os métodos de instalação da NBR-5410" },
+  { icon: "conduit", text: "Dimensionamento da tubulação, com indicações" },
+  { icon: "route", text: "Lançamento automático de eletrodutos, com desvios automáticos" },
+  { icon: "tag", text: "Lançamento automático das TAGs de fiação" },
+  { icon: "bulb", text: "Lançamento de pontos de iluminação automaticamente, por spaces ou áreas (regulares ou irregulares)" },
+  { icon: "report", text: "Relatório completo de dimensionamento da fiação em TXT, para o memorial ou conferência dos parâmetros" },
+  { icon: "zap", text: "Cálculo automático de queda de tensão nos circuitos" },
+  { icon: "plug", text: "Criação e atribuição de circuitos automaticamente" },
+  { icon: "diagram", text: "Geração automática de diagramas unifilares e multifilares" },
+  { icon: "legend", text: "Geração automática de legenda de pontos" },
+  { icon: "tag-plug", text: "Inserção automática de TAGs em tomadas, interruptores e luminárias" },
+  { icon: "pen", text: "Ajuste das linhas de chamada e inserção de legenda de fiação" },
+  { icon: "path", text: "Ajustes do caminho da fiação" },
+  { icon: "scale", text: "Balanceamento de fases dos quadros" },
+  { icon: "template", text: "Template completo — o mesmo utilizado no curso" },
 ];
 
 // ---------------------------------------------------------------------

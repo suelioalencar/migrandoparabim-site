@@ -91,11 +91,28 @@
   }
 
   /* ---------------- Feature grid (Pro-Elétrica) ---------------- */
+  const FEATURE_ICONS = {
+    "calc": '<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15v3M8 18h4"/>',
+    "conduit": '<path d="M2 9h20M2 15h20"/><path d="M6 9v6M18 9v6"/>',
+    "route": '<circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M7 19h6a3 3 0 0 0 3-3V8a3 3 0 0 1 3-3"/>',
+    "tag": '<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1"/>',
+    "bulb": '<path d="M9 18h6M10 22h4"/><path d="M15 14c.2-1 .7-1.7 1.5-2.5A6 6 0 1 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/>',
+    "report": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M8 13h8M8 17h8M8 9h2"/>',
+    "zap": '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+    "plug": '<path d="M12 22v-5M9 8V2M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/>',
+    "diagram": '<rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-5h14v5"/>',
+    "legend": '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.5"/><circle cx="4.5" cy="12" r="1.5"/><circle cx="4.5" cy="18" r="1.5"/>',
+    "tag-plug": '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9.5" cy="12" r="1"/><circle cx="14.5" cy="12" r="1"/><path d="M12 15.5v1"/>',
+    "pen": '<path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    "path": '<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h3a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h7"/>',
+    "scale": '<path d="M12 3v18M7 21h10M3 7h18"/><path d="m6 7-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0z"/>',
+    "template": '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>'
+  };
   const featureGrid = document.getElementById("featureGrid");
   if (featureGrid && typeof PLUGIN_FEATURES !== "undefined") {
     featureGrid.innerHTML = PLUGIN_FEATURES.map((f) => `
       <div class="feature-card">
-        <span class="icon">${f.icon}</span>
+        <span class="icon"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${FEATURE_ICONS[f.icon] || ""}</svg></span>
         <p>${f.text}</p>
       </div>
     `).join("");
@@ -130,7 +147,7 @@
   /* ---------------- Media grids (vídeos / pdfs) ---------------- */
   function renderMediaGrid(gridEl, items, kind = "video") {
     if (!gridEl) return;
-    const playIcon = kind === "pdf" ? "🔍" : "▶";
+    const playIcon = kind === "pdf" ? "↗" : "▶";
     gridEl.innerHTML = items.map((item, i) => `
       <button class="media-card" type="button" data-index="${i}">
         <span class="media-thumb">
@@ -192,9 +209,9 @@
         start: new Date(2026, 8, 20, 0, 0, 0), // 20/09/2026 00:00 (mês 0-indexado: 8 = set.)
         end:   new Date(2026, 9, 1, 0, 0, 0),  // expira à meia-noite de 01/10 → válido até 30/09 23:59
         coupon: "SETEMBRO20OFF",
-        flag: "🔥 Oferta de setembro",
+        flag: "Oferta de setembro",
         pctLabel: "20% OFF",
-        heroTrust: "🔥 20% OFF em setembro",
+        heroTrust: "20% OFF em setembro",
         note: "só até 30/09 · já aplicado no checkout",
         badge: "Turma 2.0 — oferta de setembro",
         offLabel: "−20% em setembro",
@@ -207,9 +224,9 @@
         start: new Date(2026, 9, 1, 0, 0, 0),   // 01/10/2026 00:00
         end:   new Date(2026, 10, 1, 0, 0, 0),  // expira à meia-noite de 01/11 → válido até 31/10 23:59
         coupon: "OUTUBRO15",
-        flag: "🔥 Oferta de outubro",
+        flag: "Oferta de outubro",
         pctLabel: "15% OFF",
-        heroTrust: "🔥 15% OFF em outubro",
+        heroTrust: "15% OFF em outubro",
         note: "só até 31/10 · já aplicado no checkout",
         badge: "Turma 2.0 — oferta de outubro",
         offLabel: "−15% em outubro",

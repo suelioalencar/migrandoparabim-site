@@ -2,7 +2,7 @@
  * plugin.js — página /plugin/ (site do plugin da Migrando para BIM)
  * ------------------------------------------------------------------
  * Uma lista única de recursos (PLUGIN_ITEMS) alimenta todas as seções:
- * hero rotativo, "Quantos você ainda faz?", os 8 maiores problemas, as 12
+ * hero rotativo, "Quantos você ainda faz?", os 9 maiores problemas, as 12
  * ferramentas, os 16 utilitários e os 7 comandos grátis.
  *
  * Imagens: cada item aponta para assets/img/plugin/<shot>-depois.webp
@@ -16,62 +16,16 @@
   var WA = "https://wa.me/5598991735785?text=" +
     encodeURIComponent("Olá, Suelio! Quero testar o plugin Migrando para BIM.");
   var SHOTS = "../assets/img/plugin/";
+  /* Versão das imagens: troque ao substituir um print ou GIF, para o navegador não mostrar o antigo. */
+  var IMG_V = "20261110r";
 
   /* =====================================================================
      1. CONTEÚDO — a lista única
      ===================================================================== */
   var PLUGIN_ITEMS = [
-    /* ---------- Nível 1: os 8 maiores problemas (antes/depois) ---------- */
+    /* ---------- Nível 1: os 11 maiores problemas ---------- */
     {
-      n: 1, id: "exportar-tabelas", level: 1, area: "Documentação", mod: "tools",
-      pain: "Você ainda exporta as listas de materiais do Revit uma a uma, e depois junta tudo?",
-      cmd: "Exportar Tabelas",
-      why: "Marca várias tabelas, escolhe a aba consolidada e recebe um Excel já formatado como no Revit.",
-      caption: "Tabelas marcadas e a opção de aba consolidada — o Excel sai com a formatação do Revit.",
-      scene: "Várias tabelas marcadas na tela, opção de aba consolidada e o Excel resultante."
-    },
-    {
-      n: 2, id: "selecionar-aninhadas", level: 1, area: "Elétrica", mod: "tools",
-      pain: "Ainda sai dando TAB para conseguir selecionar as famílias aninhadas?",
-      cmd: "Selecionar Aninhadas",
-      why: "Uma janela sobre as tomadas duplas e só os módulos aninhados ficam selecionados, com a contagem.",
-      caption: "A mesma tomada dupla: antes, sem seleção; depois, com os três módulos aninhados selecionados.",
-      scene: "Janela passando sobre tomadas duplas e, depois, só os módulos selecionados."
-    },
-    {
-      n: 3, id: "inserir-tags", level: 1, area: "Documentação", mod: "tools",
-      pain: "Ainda ajusta as TAGs dos dispositivos uma a uma, manualmente?",
-      cmd: "Inserir TAGs",
-      why: "Pré-visualização em duas colunas antes de aplicar, inclusive nos símbolos girados.",
-      caption: "A mesma planta sem TAGs e com as TAGs aplicadas, inclusive nos símbolos girados.",
-      scene: "Tela em duas colunas com preview: planta sem TAGs e depois com as TAGs."
-    },
-    {
-      n: 4, id: "revisar-cargas", level: 1, area: "Elétrica", mod: "tools",
-      pain: "Ainda procura qual família está com o tipo de carga errado — e por isso com o fator de demanda errado?",
-      cmd: "Revisar Cargas e Cargas por Elemento",
-      why: "Lista filtrada por tipo de carga, o elemento aninhado com o host ao lado e o destaque na planta.",
-      caption: "As cargas por elemento, com o host ao lado, e o elemento realçado na planta.",
-      scene: "Lista filtrada por tipo de carga, elemento com o host ao lado e destaque na planta."
-    },
-    {
-      n: 5, id: "exportar-importar-cargas", level: 1, area: "Elétrica", mod: "tools",
-      pain: "Ainda cadastra os fatores de demanda novos um a um?",
-      cmd: "Exportar Cargas e Importar Cargas",
-      why: "Leva as cargas para o Excel, você edita em lote e devolve tudo cadastrado no Revit.",
-      caption: "O Excel com os fatores de demanda, pronto para editar em lote.",
-      scene: "Planilha no Excel com os fatores novos e a janela nativa do Revit já cadastrada."
-    },
-    {
-      n: 6, id: "camadas-do-cad", level: 1, area: "Infraestrutura", mod: "tools",
-      pain: "Ainda volta ao CAD só para desligar uma camada ou trocar a cor do DWG importado?",
-      cmd: "Camadas do CAD",
-      why: "Busca a camada, muda cor e espessura e vê o resultado na planta, sem sair do Revit.",
-      caption: "A planta antes e depois de desligar camadas e trocar a cor do DWG.",
-      scene: "Lista de camadas com busca, cor e espessura alteradas, e a planta antes e depois."
-    },
-    {
-      n: 7, id: "lista-de-materiais", level: 1, area: "Elétrica", mod: "tools",
+      n: 1, id: "lista-de-materiais", level: 1, area: "Elétrica", mod: "tools",
       pain: "Ainda soma eletroduto em metros, peça em unidade, e aplica a perda na planilha?",
       cmd: "Lista de Materiais",
       why: "Lista unificada com miniaturas, filtros e perda por categoria; sai pronta para o Excel.",
@@ -79,31 +33,94 @@
       scene: "Lista unificada com miniaturas, filtros e perda por categoria, e o Excel exportado."
     },
     {
-      n: 8, id: "substituir-familia", level: 1, area: "Famílias", mod: "tools",
-      pain: "Ainda refaz circuito e redigita parâmetro quando precisa trocar uma família?",
-      cmd: "Substituir Família",
-      why: "Troca a família mantendo circuito, carga, valores e posição do elemento.",
-      caption: "Escolha da família de destino — circuito e valores continuam no elemento.",
-      scene: "Escolha da família de destino e o mesmo elemento depois da troca."
+      n: 2, id: "gerenciar-parametros", level: 1, area: "Famílias", mod: "tools",
+      pain: "E se, com poucos cliques, qualquer família baixada ficasse pronta para o seu template?",
+      cmd: "Gerenciador de Parâmetros",
+      why: "Renomeie famílias e tipos em lote, crie e exclua parâmetros, troque grupos e escreva fórmulas com autocompletar e verificação antes de salvar. Tudo direto do projeto, numa tela só.",
+      caption: "Famílias, tipos e parâmetros num só lugar, direto do projeto.",
+      scene: "Lista de famílias por categoria e o editor de parâmetros com o construtor de fórmulas."
     },
-
-    /* ---------- Nível 2: 12 ferramentas de alto uso ---------- */
     {
-      n: 9, id: "distribuir-suportes", level: 2, area: "Infraestrutura", mod: "tools",
+      n: 3, id: "distribuir-suportes", level: 1, area: "Infraestrutura", mod: "tools",
       pain: "Ainda coloca suporte de eletrocalha um por um, medindo a distância?",
       cmd: "Distribuir Suportes",
       why: "Escolhe a distância, agrupa por tipo e distribui os suportes no trecho em 3D.",
       scene: "Grupos por tipo, distância escolhida e o trecho 3D com suportes simétricos."
     },
     {
-      n: 10, id: "conectar-caixas", level: 2, area: "Infraestrutura", mod: "tools",
+      n: 4, id: "conectar-caixas", level: 1, area: "Infraestrutura", mod: "tools",
       pain: "Ainda desenha eletroduto por eletroduto para ligar duas caixas?",
       cmd: "Conectar Caixas",
       why: "Mostra conectores, tipo, diâmetro e quantidade antes de criar as ligações.",
       scene: "Preview com os conectores das caixas, tipo, diâmetro e quantidade."
     },
     {
-      n: 11, id: "gerenciador-de-folhas", level: 2, area: "Documentação", mod: "free",
+      n: 5, id: "camadas-do-cad", level: 1, area: "Infraestrutura", mod: "tools",
+      pain: "Ainda volta ao CAD só para desligar uma camada ou trocar a cor do DWG importado?",
+      cmd: "Camadas do CAD",
+      why: "Busca a camada, muda cor e espessura e vê o resultado na planta, sem sair do Revit.",
+      caption: "A planta antes e depois de desligar camadas e trocar a cor do DWG.",
+      scene: "Lista de camadas com busca, cor e espessura alteradas, e a planta antes e depois."
+    },
+    {
+      n: 6, id: "inserir-tags", level: 1, area: "Documentação", mod: "tools",
+      pain: "Ainda ajusta as TAGs dos dispositivos uma a uma, manualmente?",
+      cmd: "Inserir TAGs",
+      why: "Pré-visualização em duas colunas antes de aplicar, inclusive nos símbolos girados.",
+      caption: "A mesma planta sem TAGs e com as TAGs aplicadas, inclusive nos símbolos girados.",
+      scene: "Tela em duas colunas com preview: planta sem TAGs e depois com as TAGs."
+    },
+    {
+      n: 7, id: "revisar-cargas", level: 1, area: "Elétrica", mod: "tools",
+      pain: "Ainda procura qual família está com o tipo de carga errado — e por isso com o fator de demanda errado?",
+      cmd: "Revisar Cargas e Cargas por Elemento",
+      why: "Lista filtrada por tipo de carga, o elemento aninhado com o host ao lado e o destaque na planta.",
+      caption: "As cargas por elemento, com o host ao lado, e o elemento realçado na planta.",
+      scene: "Lista filtrada por tipo de carga, elemento com o host ao lado e destaque na planta."
+    },
+    {
+      n: 8, id: "exportar-importar-cargas", level: 1, area: "Elétrica", mod: "tools",
+      pain: "Ainda cadastra os fatores de demanda novos um a um?",
+      cmd: "Exportar Cargas e Importar Cargas",
+      why: "Leva as classificações de carga e os fatores de demanda para o Excel, você edita em lote e devolve tudo cadastrado no Revit. Como é uma planilha comum, dá até para pedir a uma IA, como o Claude ou o ChatGPT no Excel, que monte a tabela da concessionária para você.",
+      caption: "Fatores de demanda no Excel: edite em lote, ou peça para a IA preencher, e importe de volta no Revit.",
+      scene: "Planilha no Excel com os fatores novos e a janela nativa do Revit já cadastrada."
+    },
+    {
+      n: 9, id: "exportar-tabelas", level: 1, area: "Documentação", mod: "tools",
+      pain: "Você ainda exporta as listas de materiais do Revit uma a uma, e depois junta tudo?",
+      cmd: "Exportar Tabelas",
+      why: "Marca várias tabelas, escolhe a aba consolidada e recebe um Excel já formatado como no Revit.",
+      caption: "Tabelas marcadas e a opção de aba consolidada — o Excel sai com a formatação do Revit.",
+      scene: "Várias tabelas marcadas na tela, opção de aba consolidada e o Excel resultante."
+    },
+    {
+      n: 10, id: "substituir-familia", level: 1, area: "Famílias", mod: "tools",
+      pain: "Ainda refaz circuito e redigita parâmetro quando precisa trocar uma família?",
+      cmd: "Substituir Família",
+      why: "Troca a família mantendo circuito, carga, valores e posição do elemento.",
+      caption: "Escolha da família de destino — circuito e valores continuam no elemento.",
+      scene: "Escolha da família de destino e o mesmo elemento depois da troca."
+    },
+    {
+      n: 11, id: "conexoes-de-conduite", level: 1, area: "Famílias", mod: "tools",
+      pain: "Ainda modela conexão de conduíte uma a uma na família?",
+      cmd: "Conexões de Conduíte",
+      why: "Cria a fileira de conexões na face escolhida.",
+      scene: "Face com a fileira de conexões criada."
+    },
+
+    /* ---------- Nível 2: 11 ferramentas de alto uso ---------- */
+    {
+      n: 26, id: "selecionar-aninhadas", level: 2, area: "Elétrica", mod: "tools",
+      pain: "Ainda sai dando TAB para conseguir selecionar as famílias aninhadas?",
+      cmd: "Selecionar Aninhadas",
+      why: "Uma janela sobre as tomadas duplas e só os módulos aninhados ficam selecionados, com a contagem.",
+      caption: "A mesma tomada dupla: antes, sem seleção; depois, com os três módulos aninhados selecionados.",
+      scene: "Janela passando sobre tomadas duplas e, depois, só os módulos selecionados."
+    },
+    {
+      n: 22, id: "gerenciador-de-folhas", level: 2, area: "Documentação", mod: "free",
       pain: "Ainda renomeia e renumera folha por folha?",
       cmd: "Gerenciador de Folhas",
       why: "Edição em lote de nomes e números, com revisões, numa lista única.",
@@ -122,13 +139,6 @@
       cmd: "Gerenciador de Vistas",
       why: "Grade editável de todas as vistas, com o que está pendente marcado em amarelo.",
       scene: "Grade editável com as pendências em amarelo."
-    },
-    {
-      n: 14, id: "gerenciar-parametros", level: 2, area: "Famílias", mod: "tools",
-      pain: "Ainda descobre só ao salvar que a fórmula da família está errada?",
-      cmd: "Gerenciar Parâmetros",
-      why: "Construtor de fórmulas com autocompletar, validação e só os parâmetros compatíveis.",
-      scene: "Construtor de fórmulas com autocompletar, validação e parâmetros compatíveis."
     },
     {
       n: 15, id: "parametros-do-projeto", level: 2, area: "Documentação", mod: "tools",
@@ -172,21 +182,28 @@
       why: "Dois cliques no 3D: a peça sai do lugar, encosta e conecta já alinhada.",
       scene: "Sequência de dois cliques no 3D: peça solta e peça alinhada e conectada."
     },
+    {
+      n: 38, id: "filtrar-eletrica", level: 2, area: "Elétrica", mod: "tools",
+      pain: "Ainda monta filtro de vista só para achar as tomadas de um circuito ou de uma legenda?",
+      cmd: "Filtrar Elétrica",
+      why: "Escolhe as categorias elétricas, filtra por qualquer parâmetro com vários valores e seleciona na vista.",
+      scene: "Categorias, filtro por legenda e a seleção na planta."
+    },
 
-    /* ---------- Nível 3: 16 utilitários ---------- */
+    /* ---------- Nível 3: 15 utilitários ---------- */
+    {
+      n: 14, id: "gerenciador-de-familias", level: 3, area: "Famílias", mod: "tools",
+      pain: "Ainda renomeia família por família no Navegador de Projeto?",
+      cmd: "Gerenciador de Famílias",
+      why: "Lista por categoria com renomear em lote.",
+      scene: "Lista por categoria com renomear em lote."
+    },
     {
       n: 21, id: "atualizador-de-templates", level: 3, area: "Documentação", mod: "tools",
       pain: "Ainda compara o projeto com o template no olho?",
       cmd: "Atualizador de Templates",
       why: "Abas de comparação com tudo o que falta, já marcado.",
       scene: "Abas de comparação com o que falta marcado."
-    },
-    {
-      n: 22, id: "gerenciador-de-familias", level: 3, area: "Famílias", mod: "tools",
-      pain: "Ainda renomeia família por família no Navegador de Projeto?",
-      cmd: "Gerenciador de Famílias",
-      why: "Lista por categoria com renomear em lote.",
-      scene: "Lista por categoria com renomear em lote."
     },
     {
       n: 23, id: "ligar-saidas-usadas", level: 3, area: "Elétrica", mod: "tools",
@@ -208,13 +225,6 @@
       cmd: "Juntar Cortados",
       why: "Lista os pares encontrados para conferir e juntar.",
       scene: "Lista dos pares encontrados para conferir e juntar."
-    },
-    {
-      n: 26, id: "conexoes-de-conduite", level: 3, area: "Famílias", mod: "tools",
-      pain: "Ainda modela conexão de conduíte uma a uma na família?",
-      cmd: "Conexões de Conduíte",
-      why: "Cria a fileira de conexões na face escolhida.",
-      scene: "Face com a fileira de conexões criada."
     },
     {
       n: 27, id: "conexoes-de-eletrocalha", level: 3, area: "Famílias", mod: "tools",
@@ -267,9 +277,9 @@
     },
     {
       n: 34, id: "alinhar-textos", level: 3, area: "Documentação", mod: "tools",
-      pain: "Ainda empilha nota de texto uma por uma?",
-      cmd: "Alinhar Textos",
-      why: "Notas soltas viram coluna, em ordem alfabética.",
+      pain: "Ainda empilha nota de texto e TAG uma por uma?",
+      cmd: "Alinhar Texto/TAG",
+      why: "Notas de texto e TAGs soltas viram coluna ou linha, em ordem alfabética, do lado que você clicar.",
       scene: "Notas soltas e notas em coluna, em ordem alfabética."
     },
     {
@@ -299,8 +309,8 @@
 
   /* Perguntas que giram na primeira dobra (os seis maiores problemas). */
   var HERO_IDS = [
-    "exportar-tabelas", "selecionar-aninhadas", "inserir-tags",
-    "revisar-cargas", "camadas-do-cad", "lista-de-materiais"
+    "lista-de-materiais", "selecionar-aninhadas", "inserir-tags",
+    "revisar-cargas", "exportar-importar-cargas", "camadas-do-cad"
   ];
 
   /* Perguntas da seção "Quantos você ainda faz?". */
@@ -341,6 +351,28 @@
     "concordancia": 1
   };
 
+  /* Itens com GIF animado (assets/img/plugin/<nn>-<id>.gif): o GIF substitui o print e o antes/depois. */
+  var HAS_GIF = {
+    "alinhar-textos": 1,
+    "desconectar": 1,
+    "ajustar-texto-viewport": 1,
+    "salvar-familias": 1,
+    "alinhar-vista": 1,
+    "gerenciar-parametros": 1,
+    "lista-de-materiais": 1,
+    "inserir-tags": 1,
+    "revisar-cargas": 1,
+    "mover-e-conectar": 1,
+    "conexoes-de-conduite": 1,
+    "nomear-familias": 1,
+    "filtrar-eletrica": 1,
+    "camadas-do-cad": 1,
+    "conectar-caixas": 1,
+    "distribuir-suportes": 1,
+    "ligar-saidas-usadas": 1,
+    "selecionar-somente": 1
+  };
+
   /* Itens que têm o par antes/depois (comparador arrastável). */
   var HAS_PAIR = {
     "selecionar-aninhadas": 1,
@@ -379,12 +411,13 @@
      3. Componentes de imagem (só renderizam quando o print existe)
      ===================================================================== */
   function shotSrc(item, suffix) {
-    return SHOTS + shotId(item) + "-" + (suffix || "depois") + ".webp";
+    if (!suffix && HAS_GIF[item.id]) return SHOTS + shotId(item) + ".gif?v=" + IMG_V;
+    return SHOTS + shotId(item) + "-" + (suffix || "depois") + ".webp?v=" + IMG_V;
   }
 
   /* Print único: cards, hero e problemas que têm só o "depois". */
   function shotFigure(item, opts) {
-    if (!HAS_SHOT[item.id]) return "";
+    if (!HAS_SHOT[item.id] && !HAS_GIF[item.id]) return "";
     opts = opts || {};
     var cls = opts.className ? " " + opts.className : "";
     var alt = opts.alt || ("Print do comando " + item.cmd + " no Revit");
@@ -401,9 +434,9 @@
 
   /* Comparador antes/depois (arrastar para revelar) ou print único. */
   function compareBlock(item) {
-    if (!HAS_SHOT[item.id]) return "";
+    if (!HAS_SHOT[item.id] && !HAS_GIF[item.id]) return "";
 
-    if (!HAS_PAIR[item.id]) {
+    if (!HAS_PAIR[item.id] || HAS_GIF[item.id]) {
       return shotFigure(item, { caption: item.caption || ("Depois do comando " + item.cmd) });
     }
 
@@ -598,7 +631,7 @@
   }
 
   /* =====================================================================
-     6. Os 8 maiores problemas
+     6. Os 9 maiores problemas
      ===================================================================== */
   function renderPains() {
     var host = $("#painsList");
