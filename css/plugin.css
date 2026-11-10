@@ -397,7 +397,8 @@ button { font-family: inherit; cursor: pointer; }
   border-left: 2px solid var(--green); border-bottom: 2px solid var(--green);
   transform: rotate(-45deg);
 }
-.module .btn { margin-top: auto; }
+.module > .btn { margin-top: auto; }
+.module-actions { margin-top: auto; display: grid; gap: 10px; }
 .modules-note {
   margin: 28px 0 0; padding: 16px 20px; font-size: 13.5px; color: var(--text-muted);
   border: 1px dashed var(--border); border-radius: 12px; max-width: 860px;

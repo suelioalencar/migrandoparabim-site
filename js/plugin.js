@@ -748,6 +748,12 @@
         track("PluginTest", { origem: a.dataset.origem || "sem-origem" });
       });
     });
+    /* Botões de checkout (Kiwify). */
+    $$(".js-buy").forEach(function (a) {
+      a.addEventListener("click", function () {
+        track("PluginBuy", { plano: a.dataset.plano || "sem-plano" });
+      });
+    });
   }
 
   /* =====================================================================
