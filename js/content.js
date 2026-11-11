@@ -145,6 +145,25 @@ const COURSE_MODULES = [
     ],
   },
   {
+    title: "Plugin Migrando para BIM",
+    lessonsCount: 12,
+    duration: "1h23",
+    lessons: [
+      "Lista de materiais e exportação",
+      "Conectar caixas",
+      "Recursos menores de infraestrutura",
+      "Criar conexões de eletrodutos e eletrocalhas",
+      "Gerenciamento de famílias e parâmetros",
+      "Paletas de famílias e comandos",
+      "Elementos e filtros",
+      "Cargas: fatores de demanda e elementos",
+      "Inserir TAGs",
+      "Camadas do CAD",
+      "Ajustar viewports",
+      "Gerenciamento de vistas, folhas e exportação CAD e PDF",
+    ],
+  },
+  {
     title: "Criação de Famílias e Personalização",
     upcoming: true,
     status: "Em breve",
@@ -175,9 +194,9 @@ const COURSE_MODULES = [
 
 // Resumo do que já está gravado (usado no cabeçalho da grade curricular)
 const COURSE_STATS = {
-  modulesRecorded: 12,
-  lessonsRecorded: 51,
-  hoursRecorded: "mais de 21 horas",
+  modulesRecorded: 13,
+  lessonsRecorded: 63,
+  hoursRecorded: "mais de 22 horas",
   upcomingLabel: "E ainda vem mais…",
   upcomingNote:
     "Módulos em produção — entram na plataforma sem custo adicional para quem já é aluno.",
