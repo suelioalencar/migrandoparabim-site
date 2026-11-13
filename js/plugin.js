@@ -15,7 +15,6 @@
 
   var WA = "https://wa.me/5598991735785?text=" +
     encodeURIComponent("Olá, Suelio! Quero testar o plugin Migrando para BIM.");
-  var DOWNLOAD = "https://1drv.ms/u/c/c562fb170368f012/IQBSTIZJfVwhToDVEmmxpzYzAYZbQAOxSTs1Lyyr0pdVELw?e=uWilfE&download=1";
   var SHOTS = "../assets/img/plugin/";
   /* Versão das imagens: troque ao substituir um print ou GIF, para o navegador não mostrar o antigo. */
   var IMG_V = "20261110r";
@@ -739,9 +738,8 @@
      9. Links e tracking
      ===================================================================== */
   function initLinks() {
-    /* Download direto do instalador (OneDrive). */
+    /* O destino do download vem do HTML; o script apenas registra o clique. */
     $$(".js-download").forEach(function (a) {
-      a.href = DOWNLOAD;
       a.rel = "noopener";
       a.addEventListener("click", function () {
         track("PluginDownload", { origem: a.dataset.origem || "sem-origem" });
