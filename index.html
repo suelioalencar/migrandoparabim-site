@@ -34,6 +34,7 @@
     <button class="promo-code" id="promoCouponBtn" type="button" data-coupon="" title="Copiar cupom">
       <span class="coupon-text"></span> <span class="promo-copy">copiar</span>
     </button>
+    <span class="promo-bonus" id="promoBonus" data-bonus-only hidden></span>
     <span class="promo-note" id="promoNote"></span>
   </div>
 </div>
@@ -56,7 +57,7 @@
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn-primary btn-sm js-buy-link" data-coupon="SETEMBRO20OFF" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">Comprar agora</a>
+      <a class="btn btn-primary btn-sm js-buy-link" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">Comprar agora</a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -73,23 +74,30 @@
       <div class="hero-copy">
         <p class="eyebrow">Turma 2.0 — vagas abertas</p>
         <h1>Migre de vez para <span class="text-gradient">BIM</span> com Revit, Pro-Elétrica e o plugin do curso</h1>
-        <p class="hero-sub">
+        <p class="hero-sub" data-bonus-regular>
           <!-- PLACEHOLDER: ajustar quando o conteúdo do curso 2.0 chegar -->
           Treinamento completo, do absoluto zero à entrega, para projetos elétricos de altíssimo
           detalhamento. Você aprende com o Pro-Elétrica e com o <strong>plugin Migrando para BIM</strong> —
           41 comandos de projeto e documentação no Revit, com 7 grátis — e os dois vêm inclusos por 6 meses.
         </p>
+        <p class="hero-sub" data-bonus-only hidden>
+          Treinamento completo, do absoluto zero à entrega, para projetos elétricos de altíssimo
+          detalhamento. Você aprende com o Pro-Elétrica e com o <strong>plugin Migrando para BIM</strong> —
+          41 comandos de projeto e documentação no Revit, com 7 grátis — com 6 meses do Pro-Elétrica
+          e <strong>1 ano</strong> do plugin Migrando para BIM na Black Friday.
+        </p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg js-buy-link" data-coupon="SETEMBRO20OFF" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
+          <a class="btn btn-primary btn-lg js-buy-link" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
             Quero migrar para BIM
           </a>
           <a class="btn btn-ghost btn-lg" href="#demonstracao">Ver demonstração ▶</a>
         </div>
         <ul class="hero-trust">
           <li data-promo-only hidden id="heroTrustPromo">Oferta do mês</li>
+          <li data-bonus-only hidden id="heroTrustBonus"></li>
           <li>Mais de 200 alunos na v1.0</li>
           <li>Acesso vitalício</li>
-          <li>2 plugins inclusos por 6 meses</li>
+          <li data-bonus-regular>2 plugins inclusos por 6 meses</li>
           <li>7 dias de garantia</li>
           <li>Pagamento seguro (Kiwify)</li>
         </ul>
@@ -174,8 +182,10 @@
         </div>
         <div class="highlight-card">
           <span class="highlight-icon"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span>
-          <h3>Dois plugins inclusos por 6 meses</h3>
-          <p>Pro-Elétrica para dimensionamento, diagramas e TAGs, e o plugin Migrando para BIM com 41 comandos de projeto e documentação — 6 meses de acesso gratuito* a cada um.</p>
+          <h3 data-bonus-regular>Dois plugins inclusos por 6 meses</h3>
+          <h3 data-bonus-only hidden>Dois plugins inclusos, um deles por 1 ano</h3>
+          <p data-bonus-regular>Pro-Elétrica para dimensionamento, diagramas e TAGs, e o plugin Migrando para BIM com 41 comandos de projeto e documentação — 6 meses de acesso gratuito* a cada um.</p>
+          <p data-bonus-only hidden>Pro-Elétrica para dimensionamento, diagramas e TAGs, e o plugin Migrando para BIM com 41 comandos de projeto e documentação — 6 meses de acesso gratuito* ao Pro-Elétrica e <strong>1 ano</strong> ao plugin Migrando para BIM (bônus da Black Friday).</p>
         </div>
       </div>
     </div>
@@ -248,7 +258,8 @@
         <p class="eyebrow">Também incluso</p>
         <h3>Plugin Migrando para BIM</h3>
         <p>41 comandos de projeto elétrico e documentação dentro do Revit: cargas, TAGs, listas de materiais, pranchas, famílias e automação. Sete comandos são grátis e ficam com você para sempre; os outros 33 vêm no Tools.</p>
-        <p class="plugin-teaser-gift">Alunos do treinamento ganham <strong>6 meses de acesso</strong> a este plugin, além dos 6 meses do Pro-Elétrica.</p>
+        <p class="plugin-teaser-gift" data-bonus-regular>Alunos do treinamento ganham <strong>6 meses de acesso</strong> a este plugin, além dos 6 meses do Pro-Elétrica.</p>
+        <p class="plugin-teaser-gift" data-bonus-only hidden>Na Black Friday, alunos do treinamento ganham <strong>1 ano de acesso</strong> a este plugin, além dos 6 meses do Pro-Elétrica.</p>
         <a class="btn btn-ghost btn-sm" href="/plugin/">Conhecer o plugin →</a>
       </aside>
 
@@ -278,8 +289,11 @@
         <div class="pricing-badge" data-promo-only hidden id="pricingBadgePromo">Turma 2.0 — oferta do mês</div>
         <div class="pricing-badge" data-regular-only>Turma 2.0</div>
         <h2>Invista na sua migração para BIM</h2>
-        <p class="section-lead">
+        <p class="section-lead" data-bonus-regular>
           Acesso vitalício ao treinamento completo + 6 meses de acesso ao Pro-Elétrica e ao plugin Migrando para BIM.
+        </p>
+        <p class="section-lead" data-bonus-only hidden>
+          Acesso vitalício ao treinamento completo + 6 meses de acesso ao Pro-Elétrica e <strong>1 ano</strong> de acesso ao plugin Migrando para BIM.
         </p>
 
         <!-- preço com a oferta do mês (texto/valores preenchidos via JS a partir de CAMPAIGNS, em main.js) -->
@@ -303,13 +317,14 @@
           <span class="price-cash">ou R$ 649,00 à vista</span>
         </div>
 
-        <a class="btn btn-primary btn-lg js-buy-link" data-coupon="SETEMBRO20OFF" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
+        <a class="btn btn-primary btn-lg js-buy-link" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
           Garantir minha vaga
         </a>
         <ul class="price-list">
           <li>Acesso vitalício à plataforma</li>
           <li>6 meses de acesso gratuito* ao Plugin Pro-Elétrica</li>
-          <li>6 meses de acesso gratuito* ao plugin Migrando para BIM</li>
+          <li data-bonus-regular>6 meses de acesso gratuito* ao plugin Migrando para BIM</li>
+          <li data-bonus-only hidden><strong>1 ano</strong> de acesso gratuito* ao plugin Migrando para BIM (exclusivo da Black Friday)</li>
           <li>Comunidade no WhatsApp</li>
           <li>Garantia incondicional de 7 dias</li>
         </ul>
@@ -370,6 +385,7 @@
           </button>
           <div class="accordion-panel">
             <p>Comprando o treinamento, você ganha 6 meses de acesso gratuito ao Plugin Pro-Elétrica para Revit <strong>e</strong> 6 meses de acesso gratuito ao plugin Migrando para BIM (41 comandos, com 7 grátis para sempre). Cada licença é online e para um computador. Após efetuar o pagamento, você recebe no seu e-mail os dados de acesso à plataforma e ao grupo da comunidade no WhatsApp, onde é liberado o acesso aos plugins.</p>
+            <p data-bonus-only hidden><strong>Na Black Friday (até 30/11)</strong>, o acesso ao plugin Migrando para BIM é de <strong>1 ano</strong> em vez de 6 meses. O Pro-Elétrica continua com 6 meses.</p>
           </div>
         </div>
       </div>
@@ -381,7 +397,7 @@
     <div class="container">
       <h2>Pronto para migrar de vez para BIM?</h2>
       <p class="cta-final-sub">Junte-se a mais de 200 alunos que já mudaram a forma como projetam.</p>
-      <a class="btn btn-primary btn-lg js-buy-link" data-coupon="SETEMBRO20OFF" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
+      <a class="btn btn-primary btn-lg js-buy-link" href="https://pay.kiwify.com.br/ysUoJpj" target="_blank" rel="noopener">
         Comprar agora
       </a>
     </div>
@@ -415,7 +431,8 @@
 </div>
 
 <script src="js/content.js?v=20261111a"></script>
-<script src="js/main.js?v=20261111a"></script>
+<script src="js/campaigns.js?v=20261120a"></script>
+<script src="js/main.js?v=20261120a"></script>
 <script type="module" src="js/ifc-viewer.js?v=20261110s"></script>
 </body>
 </html>

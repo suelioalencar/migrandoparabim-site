@@ -763,6 +763,16 @@
     });
   }
 
+  /* Campanha por tempo limitado (js/campaigns.js): mostra os textos marcados
+     com data-bonus-only só durante uma campanha com bônus. Sem o arquivo
+     ou fora da janela, mantém os textos regulares. */
+  function initCampaign() {
+    var c = window.mbpActiveCampaign ? window.mbpActiveCampaign() : null;
+    var hasBonus = !!(c && c.bonus);
+    $$("[data-bonus-only]").forEach(function (el) { el.hidden = !hasBonus; });
+    $$("[data-bonus-regular]").forEach(function (el) { el.hidden = hasBonus; });
+  }
+
   /* =====================================================================
      10. Print ampliado (clique na imagem abre o pop-up)
      ===================================================================== */
@@ -849,6 +859,7 @@
     renderFree();
     initLinks();
     initLightbox();
+    initCampaign();
 
     var y = $("#year");
     if (y) y.textContent = new Date().getFullYear();

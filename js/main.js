@@ -199,49 +199,23 @@
    * cai no preço normal, nunca num desconto indevido ou desatualizado.
    *
    * Para adicionar a campanha do mês seguinte: só acrescente um novo
-   * objeto no fim de CAMPAIGNS (a janela de cada uma não deve se
-   * sobrepor à da vizinha).
+   * objeto no fim de CAMPAIGNS em js/campaigns.js (a janela de cada uma
+   * não deve se sobrepor à da vizinha).
    */
   (function () {
-    const CAMPAIGNS = [
-      {
-        // Setembro/2026 — 20% OFF
-        start: new Date(2026, 8, 20, 0, 0, 0), // 20/09/2026 00:00 (mês 0-indexado: 8 = set.)
-        end:   new Date(2026, 9, 1, 0, 0, 0),  // expira à meia-noite de 01/10 → válido até 30/09 23:59
-        coupon: "SETEMBRO20OFF",
-        flag: "Oferta de setembro",
-        pctLabel: "20% OFF",
-        heroTrust: "20% OFF em setembro",
-        note: "só até 30/09 · já aplicado no checkout",
-        badge: "Turma 2.0 — oferta de setembro",
-        offLabel: "−20% em setembro",
-        priceNew: "12x de R$ 53,70",
-        priceCash: "ou R$ 519,20 à vista",
-        couponLabel: "Cupom de setembro · válido só até 30/09",
-      },
-      {
-        // Outubro/2026 — 15% OFF
-        start: new Date(2026, 9, 1, 0, 0, 0),   // 01/10/2026 00:00
-        end:   new Date(2026, 10, 1, 0, 0, 0),  // expira à meia-noite de 01/11 → válido até 31/10 23:59
-        coupon: "OUTUBRO15",
-        flag: "Oferta de outubro",
-        pctLabel: "15% OFF",
-        heroTrust: "15% OFF em outubro",
-        note: "só até 31/10 · já aplicado no checkout",
-        badge: "Turma 2.0 — oferta de outubro",
-        offLabel: "−15% em outubro",
-        priceNew: "12x de R$ 57,05",
-        priceCash: "ou R$ 551,65 à vista",
-        couponLabel: "Cupom de outubro · válido só até 31/10",
-      },
-    ];
-
-    const now = new Date();
-    const campaign = CAMPAIGNS.find((c) => now >= c.start && now < c.end);
+    // As campanhas ficam em js/campaigns.js (compartilhado com a página do plugin).
+    // Sem o arquivo ou fora da janela: campaign = null e o site mostra o preço regular.
+    const campaign = window.mbpActiveCampaign ? window.mbpActiveCampaign() : null;
     const active = !!campaign;
 
     document.querySelectorAll("[data-promo-only]").forEach((el) => { el.hidden = !active; });
     document.querySelectorAll("[data-regular-only]").forEach((el) => { el.hidden = active; });
+
+    // Bônus exclusivo da campanha (ex.: 1 ano do plugin Migrando para BIM em vez de 6 meses).
+    // [data-bonus-only] nasce oculto; [data-bonus-regular] nasce visível (texto regular).
+    const hasBonus = active && !!campaign.bonus;
+    document.querySelectorAll("[data-bonus-only]").forEach((el) => { el.hidden = !hasBonus; });
+    document.querySelectorAll("[data-bonus-regular]").forEach((el) => { el.hidden = hasBonus; });
 
     if (active) {
       const setText = (id, text) => {
@@ -257,6 +231,10 @@
       setText("priceNew", campaign.priceNew);
       setText("priceCash", campaign.priceCash);
       setText("couponLabel", campaign.couponLabel);
+      if (hasBonus) {
+        setText("promoBonus", campaign.bonus);
+        setText("heroTrustBonus", campaign.bonus);
+      }
 
       ["promoCouponBtn", "couponCodeBtn"].forEach((id) => {
         const btn = document.getElementById(id);
@@ -266,7 +244,7 @@
         if (textEl) textEl.textContent = campaign.coupon;
       });
 
-      document.querySelectorAll("a.js-buy-link[data-coupon]").forEach((a) => {
+      document.querySelectorAll("a.js-buy-link").forEach((a) => {
         a.dataset.coupon = campaign.coupon;
         const url = new URL(a.href);
         url.searchParams.set("coupon", a.dataset.coupon);
