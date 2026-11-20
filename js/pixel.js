@@ -40,9 +40,17 @@
    */
   window.mbTrack = function (name, params, custom) {
     try {
-      if (!window.fbq) return;
-      if (custom) window.fbq("trackCustom", name, params || {});
-      else window.fbq("track", name, params || {});
+      if (window.fbq) {
+        if (custom) window.fbq("trackCustom", name, params || {});
+        else window.fbq("track", name, params || {});
+      }
     } catch (e) { /* tracking nunca pode quebrar a página */ }
+    // Espelha no GA4 (G-BCYWZS1711). Lead já sai como generate_lead na /aula-gratis/.
+    try {
+      var ga = { ViewContent: "view_item", InitiateCheckout: "begin_checkout", VideoPlay: "video_start" }[name];
+      if (ga && typeof window.gtag === "function") {
+        window.gtag("event", ga, { send_to: "G-BCYWZS1711", item_name: (params && params.content_name) || "Migrando para BIM 2.0" });
+      }
+    } catch (e) { /* idem */ }
   };
 })();
