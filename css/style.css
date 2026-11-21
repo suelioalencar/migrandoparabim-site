@@ -869,3 +869,7 @@ body {
 .path-card--main:hover { border-color: var(--yellow); }
 .path-link { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--yellow); }
 @media (max-width: 860px) { .paths { grid-template-columns: 1fr; } }
+
+/* Aviso abaixo do botão de compra: o "Total" do checkout já vem com o desconto */
+.checkout-note { margin: 12px auto 0; max-width: 420px; font-size: .9rem; line-height: 1.4; color: var(--text-muted, #9fb2c6); text-align: center; }
+.checkout-note strong { color: var(--text, #fff); }

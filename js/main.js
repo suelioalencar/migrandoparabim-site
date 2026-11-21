@@ -230,6 +230,8 @@
       setText("priceOffLabel", campaign.offLabel);
       setText("priceNew", campaign.priceNew);
       setText("priceCash", campaign.priceCash);
+      setText("checkoutNoteNew", campaign.priceNew);
+      setText("checkoutNoteCash", campaign.priceCash);
       setText("couponLabel", campaign.couponLabel);
       if (hasBonus) {
         setText("promoBonus", campaign.bonus);
