@@ -873,3 +873,25 @@ body {
 /* Aviso abaixo do botão de compra: o "Total" do checkout já vem com o desconto */
 .checkout-note { margin: 12px auto 0; max-width: 420px; font-size: .9rem; line-height: 1.4; color: var(--text-muted, #9fb2c6); text-align: center; }
 .checkout-note strong { color: var(--text, #fff); }
+/* ---------- depoimentos ---------- */
+.testimonials-section { padding-bottom: 40px; }
+.testimonials-score { color: var(--text-muted); font-size: 1rem; margin: 0; }
+.testimonials-score strong { color: var(--yellow); font-family: var(--font-head); font-size: 1.5rem; margin-right: 2px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.testimonial {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+.testimonial blockquote { margin: 0; color: var(--text); font-size: .98rem; line-height: 1.55; }
+.testimonial figcaption { display: flex; flex-direction: column; gap: 2px; padding-top: 14px; border-top: 1px solid var(--border); }
+.testimonial figcaption strong { font-size: .92rem; }
+.testimonial figcaption span { font-size: .85rem; color: var(--text-dim); }
+@media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .testimonials-grid { grid-template-columns: 1fr; } }
